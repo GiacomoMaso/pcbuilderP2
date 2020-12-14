@@ -6,6 +6,7 @@ CONFIG -= qt
 SOURCES += \
         case.cpp \
         componente.cpp \
+        contenitore.cpp \
         cpu.cpp \
         gpu.cpp \
         item.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     case.h \
     componente.h \
+    contenitore.h \
     cpu.h \
     gpu.h \
     item.h \
