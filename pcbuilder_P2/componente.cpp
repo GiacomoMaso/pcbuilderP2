@@ -13,3 +13,8 @@ double Componente::get_price()const {
 Componente* Componente::clone () const {
     return new Componente(*this);
 }
+
+std::ostream& operator<<( std::ostream& os, const Componente& c ) {
+    os<< "Nome: "<< c.get_name()<< " " << "Prezzo: "<< c.get_price() << std::endl;
+    return os;
+};

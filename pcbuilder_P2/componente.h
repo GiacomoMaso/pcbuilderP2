@@ -1,6 +1,6 @@
 #ifndef COMPONENTE_H
 #define COMPONENTE_H
-#include<string>
+#include<iostream>
 #include "item.h"
 
 class Componente : public Item {
@@ -13,6 +13,7 @@ public:
     virtual Componente* clone () const;
     double get_price() const;
     std::string get_name()const;
+    friend std::ostream& operator<<( std::ostream&, const Componente& );
 };
 
 #endif // COMPONENTE_H
