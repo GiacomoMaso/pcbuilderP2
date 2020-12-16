@@ -1,6 +1,6 @@
 #include "contenitore.h"
 
-contenitore::contenitore()
-{
+//contenitore::contenitore()
+//{
 
-}
+//}
