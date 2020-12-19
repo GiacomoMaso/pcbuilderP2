@@ -33,6 +33,19 @@ public:
 
     };
 
+    class Const_iteratore {
+    private:
+        const Nodo* p;
+    public:
+        Const_iteratore& operator++();
+        Const_iteratore operator ++(int);
+        Const_iteratore& operator--();
+        Const_iteratore operator--(int);
+        const Nodo& operator*()const;
+        const Nodo* operator->() const;
+
+    };
+
     contenitore(const T&);
     ~contenitore();
     Nodo& operator [](int);
@@ -142,6 +155,52 @@ typename contenitore<T>::Nodo& contenitore<T>::Iteratore::operator*() const {
 
 template<class T>
 typename contenitore<T>::Nodo* contenitore<T>::Iteratore::operator->() const { //forse tutto sbagliato
+    return p;
+}
+
+template<class T>
+typename contenitore<T>::Const_iteratore& contenitore<T>::Const_iteratore::operator++(){
+    if(p) {
+        p=p->next;
+        return *this;
+    }
+}
+
+template<class T>
+typename contenitore<T>::Const_iteratore contenitore<T>::Const_iteratore::operator++(int){
+    Iteratore aux;
+    if(p) {
+        aux=*this;
+        p=p->next;
+        return aux;
+    }
+}
+
+template<class T>
+typename contenitore<T>::Const_iteratore& contenitore<T>::Const_iteratore::operator--(){
+    if(p) {
+        p=p->prec;
+        return *this;
+    }
+}
+
+template<class T>
+typename contenitore<T>::Const_iteratore contenitore<T>::Const_iteratore::operator--(int){
+    Iteratore aux;
+    if(p) {
+        aux=*this;
+        p=p->prec;
+        return aux;
+    }
+}
+
+template<class T>
+const typename contenitore<T>::Nodo& contenitore<T>::Const_iteratore::operator*() const {
+    return *p;
+}
+
+template<class T>
+const typename contenitore<T>::Nodo* contenitore<T>::Const_iteratore::operator->() const { //forse tutto sbagliato
     return p;
 }
 
