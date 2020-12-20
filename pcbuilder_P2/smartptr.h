@@ -7,14 +7,57 @@ private:
     T* ptr;
 public:
     Smartptr(const T*);
+    Smartptr(const Smartptr&);
     ~Smartptr();
+    T& operator *() const;
+    T* operator->() const;
+    Smartptr& operator=(const Smartptr&);
+    bool operator ==(const Smartptr&) const;
+    bool operator !=(const Smartptr&) const;
 };
 
 template <class T>
-Smartptr<T>::Smartptr (const T* p) : ptr(new T(*p)){}
+Smartptr<T>::Smartptr (const T* p) : ptr(p ? new T(*p) : 0) {} //da verificare
 
+template <class T>
+Smartptr<T>::Smartptr(const Smartptr& o){
+    if(o.ptr != nullptr){
+        if(ptr) delete ptr;
+        ptr=new T(*(o.ptr));
+    }
+}
 template <class T>
 Smartptr<T>::~Smartptr() {
     delete ptr;
 }
+
+template<class T>
+T& Smartptr<T>::operator*()const {
+    return *ptr;
+}
+
+template<class T>
+T* Smartptr<T>::operator->() const {
+    return ptr;
+}
+
+template <class T>
+typename Smartptr<T>::Smartptr& Smartptr<T>::operator= (const Smartptr& o){ // da verificare, non capisco il warning
+    if(this != &o ){
+        if(ptr) delete ptr;
+        ptr=new T(*(o.ptr));
+    }
+    return *this;
+}
+
+template <class T>
+bool Smartptr<T>::operator==(const Smartptr& o) const {
+    return ptr==o.ptr;
+}
+
+template <class T>
+bool Smartptr<T>::operator!=(const Smartptr& o) const {
+    return ptr!=o.ptr;
+}
+
 #endif // SMARTPTR_H
