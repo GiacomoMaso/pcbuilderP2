@@ -65,7 +65,7 @@ template<class T>
 contenitore<T>::Nodo::Nodo(const T& o, Nodo* n, Nodo* p) : obj(o), next(n),prec(p) {}; // forse da fare inline per valori di default
 
 template <class T>
-contenitore<T>::contenitore(const T& x) : first(new Nodo(x,0,0)) , last(new Nodo (x,0,0)) {};
+contenitore<T>::contenitore(const T& x) : first(new Nodo(x,0,0)) {last=first; }; // da verificare
 
 template <class T>
 contenitore<T>::~contenitore() {delete first;};
