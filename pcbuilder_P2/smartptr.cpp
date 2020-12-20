@@ -1,6 +1,6 @@
 #include "smartptr.h"
 
-Smartptr::Smartptr()
-{
+//Smartptr::Smartptr()
+//{
 
-}
+//}

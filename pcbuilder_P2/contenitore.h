@@ -13,7 +13,9 @@ private:
         Nodo* prec;
     public:
         Nodo(const T&);
-        Nodo(const T&  , Nodo*, Nodo* ) ;
+        Nodo(const T&  , Nodo*, Nodo* );
+        T get_obj() const;
+        bool operator==(const Nodo&) const;
     };
 
     Nodo* first;
@@ -21,19 +23,24 @@ private:
 public:
 
     class Iteratore {
+        friend class contenitore;
     private:
         Nodo* p;
     public:
+
         Iteratore& operator++();
         Iteratore operator ++(int);
         Iteratore& operator--();
         Iteratore operator--(int);
         Nodo& operator*()const;
         Nodo* operator->() const;
+        bool operator== (const Iteratore&) const;
+        bool operator!= (const Iteratore&) const;
 
     };
 
     class Const_iteratore {
+        friend class contenitore;
     private:
         const Nodo* p;
     public:
@@ -63,6 +70,11 @@ contenitore<T>::Nodo::Nodo(const T& o) : obj(o), next(nullptr), prec(nullptr) {}
 
 template<class T>
 contenitore<T>::Nodo::Nodo(const T& o, Nodo* n, Nodo* p) : obj(o), next(n),prec(p) {}; // forse da fare inline per valori di default
+
+template <class T>
+T contenitore<T>::Nodo::get_obj() const {
+    return obj;
+}
 
 template <class T>
 contenitore<T>::contenitore(const T& x) : first(new Nodo(x,0,0)) {last=first; }; // da verificare
@@ -101,14 +113,14 @@ T contenitore<T>::get_last() const {
 template <class T>
 typename contenitore<T>::Iteratore contenitore<T>::begin() const {
     Iteratore punt;
-    punt->p=first;
+    punt.p=first;
     return punt;
 }
 
 template <class T>
 typename contenitore<T>::Iteratore contenitore<T>::end() const { //da capire come gestire end iteratore
     Iteratore punt;
-    punt->p=last;
+    punt.p=last;
     return punt;
 }
 
@@ -203,5 +215,23 @@ template<class T>
 const typename contenitore<T>::Nodo* contenitore<T>::Const_iteratore::operator->() const { //forse tutto sbagliato
     return p;
 }
+
+template <class T>
+bool contenitore<T>::Nodo::operator==(const Nodo& o) const { // per funzionare bisogna fare overloading operatore su ogg
+    return obj==o.obj;
+}
+
+template<class T>
+bool contenitore<T>::Iteratore::operator==(const Iteratore& i) const { // da verificare
+    return this==&i;
+}
+
+template<class T>
+bool contenitore<T>::Iteratore::operator!=(const Iteratore& i) const { // da verificare
+    return this!=&i;
+}
+
+
+
 
 #endif // CONTENITORE_H

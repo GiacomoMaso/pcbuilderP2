@@ -14,6 +14,7 @@ public:
     double get_price() const;
     std::string get_name()const;
     friend std::ostream& operator<<( std::ostream&, const Componente& );
+    bool operator==(const Componente&) const;
 };
 
 #endif // COMPONENTE_H

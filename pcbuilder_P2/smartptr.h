@@ -42,7 +42,7 @@ T* Smartptr<T>::operator->() const {
 }
 
 template <class T>
-typename Smartptr<T>::Smartptr& Smartptr<T>::operator= (const Smartptr& o){ // da verificare, non capisco il warning
+Smartptr<T>& Smartptr<T>::operator= (const Smartptr& o){
     if(this != &o ){
         if(ptr) delete ptr;
         ptr=new T(*(o.ptr));
@@ -52,12 +52,12 @@ typename Smartptr<T>::Smartptr& Smartptr<T>::operator= (const Smartptr& o){ // d
 
 template <class T>
 bool Smartptr<T>::operator==(const Smartptr& o) const {
-    return ptr==o.ptr;
+    return *(ptr)==*(o.ptr);
 }
 
 template <class T>
 bool Smartptr<T>::operator!=(const Smartptr& o) const {
-    return ptr!=o.ptr;
+    return *(ptr)!=*(o.ptr);
 }
 
 #endif // SMARTPTR_H
