@@ -1,6 +1,7 @@
 #include "case.h"
 
-Case::Case(double p, std::string n, std::string c, std::string mb): Componente(p,n), case_dim(c), mb_supported(mb){}
+Case::Case(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p, std::string c, std::string mb)
+    : Componente(na,q,m,mo,p), case_dim(c), mb_supported(mb) {}
 
 std::string Case::get_case_dim() const{
     return case_dim;

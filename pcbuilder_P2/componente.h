@@ -9,7 +9,7 @@ private:
    std::string modello;
    double price;
 public:
-    Componente(std::string ="",unsigned int q=0, std::string ="", std::string ="", unsigned int p=0 );
+    Componente(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0 );
     virtual Componente* clone () const;
     double get_price() const;
     virtual double price_modify () const;

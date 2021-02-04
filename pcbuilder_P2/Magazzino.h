@@ -10,4 +10,5 @@ private:
 public:
 
 };
+
 #endif // MAGAZZINO_H
