@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        Magazzino.cpp \
         case.cpp \
         componente.cpp \
         contenitore.cpp \
@@ -16,9 +17,11 @@ SOURCES += \
         ram.cpp \
         rom.cpp \
         sconto.cpp \
+        scontrino.cpp \
         smartptr.cpp
 
 HEADERS += \
+    Magazzino.h \
     case.h \
     componente.h \
     contenitore.h \
@@ -30,4 +33,5 @@ HEADERS += \
     ram.h \
     rom.h \
     sconto.h \
+    scontrino.h \
     smartptr.h

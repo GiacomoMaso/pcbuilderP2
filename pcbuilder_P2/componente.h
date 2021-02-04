@@ -6,13 +6,10 @@
 class Componente : public Item {
 private:
    double price;
-   std::string name;
-
 public:
-    Componente(double = 0, std::string ="" );
+    Componente(double = 0, std::string ="", unsigned int q=0 );
     virtual Componente* clone () const;
     double get_price() const;
-    std::string get_name()const;
     friend std::ostream& operator<<( std::ostream&, const Componente& );
     bool operator==(const Componente&) const;
 };

@@ -1,10 +1,7 @@
 #include "componente.h"
 
-Componente::Componente(double p, std::string n ) : price(p), name(n)   {}
+Componente::Componente(double p, std::string n, unsigned int q) : Item(n,q), price(p)  {}
 
-std::string Componente::get_name()const {
-    return name;
-}
 
 double Componente::get_price()const {
     return price;
@@ -20,6 +17,6 @@ std::ostream& operator<<( std::ostream& os, const Componente& c ) {
 };
 
 bool Componente::operator==(const Componente& o) const {
-    if(price==o.price && name==o.name) return true;
+    if(price==o.price && get_name()==o.get_name()) return true;
     return false;
 }
