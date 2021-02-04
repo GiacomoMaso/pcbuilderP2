@@ -16,6 +16,7 @@ SOURCES += \
         psu.cpp \
         ram.cpp \
         rom.cpp \
+        schedamadre.cpp \
         sconto.cpp \
         scontrino.cpp \
         smartptr.cpp
@@ -32,6 +33,7 @@ HEADERS += \
     psu.h \
     ram.h \
     rom.h \
+    schedamadre.h \
     sconto.h \
     scontrino.h \
     smartptr.h

@@ -5,12 +5,13 @@
 
 class Cpu : public Componente {
 private:
+    std::string serie;
     unsigned int ghz;
     unsigned int core_number;
     std::string intel_AMD;
     std::string socket;
 public:
-    Cpu(double = 0, std::string ="", unsigned int =0, unsigned int =0, std::string ="", std::string ="" );
+    Cpu(std::string ="",unsigned int q=0, std::string ="", std::string ="", unsigned int p=0 ,std::string ="", unsigned int =0, unsigned int =0, std::string ="", std::string ="" );
     virtual Cpu* clone() const;
     unsigned int get_ghz () const;
     unsigned int get_core_number () const;

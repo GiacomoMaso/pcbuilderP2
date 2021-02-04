@@ -1,9 +1,9 @@
 #include "memoria.h"
 
-Memoria::Memoria(double p, std::string n, unsigned int t, unsigned int c )
-        : Componente(p,n), type_memory(t), capacity(c){}
+Memoria::Memoria(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p, std::string ty, unsigned int c )
+        : Componente(na,q,m,mo,p), type_memory(ty), capacity(c) {}
 
-unsigned int Memoria::get_type_memory() const{
+std::string Memoria::get_type_memory() const{
     return type_memory;
 }
 

@@ -7,6 +7,7 @@ class Case : public Componente {
 private:
     std::string case_dim;
     std::string mb_supported;
+
 public:
     Case(double = 0, std::string ="", std::string ="", std::string ="" );
     virtual Case* clone () const;

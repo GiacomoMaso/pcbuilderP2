@@ -8,9 +8,12 @@ class Item{
     std::string name;
     unsigned int quantità;
   public:
-    Item(std::string = "", unsigned int =0 );
+    Item( std::string , unsigned int =0 );
     virtual Item* clone () const = 0 ;
-    virtual std::string  get_name () const ;
+    virtual double price_modify () const = 0;
+    //virtual std::string build_name () const = 0;
+
+
     //virtual double get_price () const = 0;
 
 };

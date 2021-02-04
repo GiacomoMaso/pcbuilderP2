@@ -1,7 +1,7 @@
 #include "ram.h"
 
-Ram::Ram(double p, std::string n, unsigned int type, unsigned int cap, unsigned int clo, unsigned int lat)
-    : Memoria(p,n,type,cap), clock(clo), latency(lat) {}
+Ram::Ram(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p, std::string ty, unsigned int c, unsigned int clo, unsigned int lat, unsigned int n_sc)
+    : Memoria(na,q,m,mo,p,ty,c), clock(clo), latency(lat), num_per_pacco(n_sc) {}
 
 unsigned int Ram::get_clock() const{
     return clock;
