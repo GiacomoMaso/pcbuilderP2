@@ -9,7 +9,7 @@ private:
     std::string mb_supported;
 
 public:
-    Case(double = 0, std::string ="", std::string ="", std::string ="" );
+    Case(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0, std::string ="", std::string ="" );
     virtual Case* clone () const;
     std::string get_case_dim() const;
     std::string get_mb_supported() const;
