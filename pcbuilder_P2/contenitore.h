@@ -16,6 +16,7 @@ private:
         Nodo(const T&  , Nodo*, Nodo* );
         T get_obj() const;
         bool operator==(const Nodo&) const;
+
     };
 
     Nodo* first;
@@ -61,7 +62,7 @@ public:
     Iteratore begin() const;
     Iteratore end() const;
     T get_last() const;  // solo per testing
-
+    Nodo* remove_node(Nodo*);
 
 };
 
@@ -75,6 +76,7 @@ template <class T>
 T contenitore<T>::Nodo::get_obj() const {
     return obj;
 }
+
 
 template <class T>
 contenitore<T>::contenitore(const T& x) : first(new Nodo(x,0,0)) {last=first; }; // da verificare
@@ -229,6 +231,17 @@ bool contenitore<T>::Iteratore::operator==(const Iteratore& i) const { // da ver
 template<class T>
 bool contenitore<T>::Iteratore::operator!=(const Iteratore& i) const { // da verificare
     return this!=&i;
+}
+
+template<class T>
+typename contenitore<T>::Nodo* contenitore<T>::remove_node(Nodo* x) {
+    Nodo* provv=x;
+    if(x->prec){
+        x->prec->next=x->next;
+        delete provv;
+        return x;
+    }
+
 }
 
 

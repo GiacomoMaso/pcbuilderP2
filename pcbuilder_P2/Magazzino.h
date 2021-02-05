@@ -8,7 +8,7 @@ class Magazzino {
 private:
     contenitore<Item*> lista_ogg;
 public:
-
+    void add_compoenente (Item*);
 };
 
 #endif // MAGAZZINO_H
