@@ -9,6 +9,7 @@ private:
     contenitore<Item*> lista_ogg;
 public:
     void add_compoenente (Item*);
+    void delete_componente (std::string);
 };
 
 #endif // MAGAZZINO_H
