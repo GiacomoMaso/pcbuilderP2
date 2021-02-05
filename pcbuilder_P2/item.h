@@ -10,7 +10,7 @@ class Item{
   public:
     Item( std::string , unsigned int =0 );
     virtual Item* clone () const = 0 ;
-    virtual double price_modify () const = 0;
+    //virtual double price_modify () const = 0;
     std::string get_name() const;
     //virtual std::string build_name () const = 0;
 

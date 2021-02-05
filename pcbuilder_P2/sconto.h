@@ -11,7 +11,7 @@ public:
     Sconto(std::string ="", unsigned int=0);
     unsigned int get_percentuale () const;
     virtual Sconto* clone() const;
-    virtual double price_modify () const;
+    //virtual double price_modify () const;
 };
 
 #endif // SCONTO_H

@@ -33,8 +33,8 @@ public:
         Iteratore operator ++(int);
         Iteratore& operator--();
         Iteratore operator--(int);
-        Nodo& operator*()const;
-        Nodo* operator->() const;
+        T& operator*()const;
+        T* operator->() const;
         bool operator== (const Iteratore&) const;
         bool operator!= (const Iteratore&) const;
 
@@ -49,8 +49,10 @@ public:
         Const_iteratore operator ++(int);
         Const_iteratore& operator--();
         Const_iteratore operator--(int);
-        const Nodo& operator*()const;
-        const Nodo* operator->() const;
+        const T& operator*()const;
+        const T* operator->() const;
+        bool operator== (const Iteratore&) const;
+        bool operator!= (const Iteratore&) const;
 
     };
 
@@ -163,12 +165,12 @@ typename contenitore<T>::Iteratore contenitore<T>::Iteratore::operator--(int){
 }
 
 template<class T>
-typename contenitore<T>::Nodo& contenitore<T>::Iteratore::operator*() const {
-    return *p;
+T& contenitore<T>::Iteratore::operator*() const {
+    return p->obj;
 }
 
 template<class T>
-typename contenitore<T>::Nodo* contenitore<T>::Iteratore::operator->() const { //forse tutto sbagliato
+T* contenitore<T>::Iteratore::operator->() const { //forse tutto sbagliato
     return p;
 }
 
@@ -209,12 +211,12 @@ typename contenitore<T>::Const_iteratore contenitore<T>::Const_iteratore::operat
 }
 
 template<class T>
-const typename contenitore<T>::Nodo& contenitore<T>::Const_iteratore::operator*() const {
-    return *p;
+const T& contenitore<T>::Const_iteratore::operator*() const {
+    return p->obj;
 }
 
 template<class T>
-const typename contenitore<T>::Nodo* contenitore<T>::Const_iteratore::operator->() const { //forse tutto sbagliato
+const T* contenitore<T>::Const_iteratore::operator->() const { //forse tutto sbagliato
     return p;
 }
 
@@ -230,6 +232,16 @@ bool contenitore<T>::Iteratore::operator==(const Iteratore& i) const { // da ver
 
 template<class T>
 bool contenitore<T>::Iteratore::operator!=(const Iteratore& i) const { // da verificare
+    return this!=&i;
+}
+
+template<class T>
+bool contenitore<T>::Const_iteratore::operator==(const Iteratore& i) const { // da verificare
+    return this==&i;
+}
+
+template<class T>
+bool contenitore<T>::Const_iteratore::operator!=(const Iteratore& i) const { // da verificare
     return this!=&i;
 }
 

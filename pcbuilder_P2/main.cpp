@@ -1,40 +1,24 @@
 #include <iostream>
-#include "componente.h"
+#include "item.h"
 #include "contenitore.h"
+#include "smartptr.h"
+#include "cpu.h"
+#include "gpu.h"
+#include "componente.h"
 using namespace std;
 
 int main()
 {
-
-    Componente Tastiera(120, "corsair");
-    Componente Ciao (299, "jhonny");
-    Componente Ciao1 (299, "jhonny2");
-    Componente Ciao2 (299, "jhonny3");
-    Componente Ciao3 (299, "jhonny4");
-    Componente Ciao4 (299, "jhonny5");
-    Componente Ciao5 (299, "jhonny6");
-    Componente Ciao6 (299, "jhonny7");
-    Componente Ciao7 (299, "jhonny8");
-    Componente Ciao8 (299, "jhonny9");
-    Componente Ciao9 (299, "jhonnyfinal");
-
-    contenitore<Componente> lista(Ciao);
-    lista.add_coda(Ciao1);
-    lista.add_coda(Ciao2);
-    lista.add_coda(Ciao3);
-    lista.add_coda(Ciao4);
-    lista.add_coda(Ciao5);
-    lista.add_coda(Ciao6);
-    lista.add_coda(Ciao7);
-    lista.add_inizio(Ciao8);
-    lista.add_coda(Ciao9);
-
-
-    for( contenitore<Componente>::Iteratore it=lista.begin(); it!=lista.end(); ++it){
-            cout<< it->get_obj();
-    }
-
-
+    Cpu* a1=new Cpu("jhonny",3, "intel", "i9", 13 ,"ape",50, 500, "pollo", "mele");
+    Cpu* a2=new Cpu("jhonny",3, "intel", "i7", 13 ,"ape",50, 500, "pollo", "mele");
+    Cpu* a3=new Cpu("jhonny",3, "intel", "i5", 13 ,"ape",50, 500, "pollo", "mele");
+    Cpu* a4=new Cpu("jhonny",3, "intel", "i3", 13 ,"ape",50, 500, "pollo", "mele");
+    Cpu* a5=new Cpu("jhonny",3, "intel", "pentium", 13 ,"ape",50, 500, "pollo", "mele");
+    Smartptr<Item> ciao(a1);
+    Smartptr<Item> ciao2(a2);
+    Smartptr<Item> ciao3(a3);
+    Smartptr<Item> ciao4(a4);
+    Smartptr<Item> ciao5(a5);
 
 
 

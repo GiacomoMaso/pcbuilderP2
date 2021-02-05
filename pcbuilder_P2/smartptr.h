@@ -14,10 +14,14 @@ public:
     Smartptr& operator=(const Smartptr&);
     bool operator ==(const Smartptr&) const;
     bool operator !=(const Smartptr&) const;
+    operator T*() const;
 };
 
-template <class T>
+/*template <class T>
 Smartptr<T>::Smartptr (const T* p) : ptr(p ? new T(*p) : 0) {} //da verificare
+*/
+template <class T>
+Smartptr<T>::Smartptr(const T* p) : ptr(p ? (p) : 0) {}
 
 template <class T>
 Smartptr<T>::Smartptr(const Smartptr& o){
@@ -58,6 +62,11 @@ bool Smartptr<T>::operator==(const Smartptr& o) const {
 template <class T>
 bool Smartptr<T>::operator!=(const Smartptr& o) const {
     return *(ptr)!=*(o.ptr);
+}
+
+template <class T>
+Smartptr<T>::operator T *() const {
+    return ptr;
 }
 
 #endif // SMARTPTR_H
