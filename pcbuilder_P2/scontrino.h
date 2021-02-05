@@ -6,7 +6,7 @@
 
 class Scontrino {
 private:
-   contenitore<Smartptr<Item>> list;
+   contenitore<Item*> lista_ogg;
    double totale;
 public:
 
