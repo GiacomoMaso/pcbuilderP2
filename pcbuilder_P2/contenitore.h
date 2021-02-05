@@ -235,11 +235,16 @@ bool contenitore<T>::Iteratore::operator!=(const Iteratore& i) const { // da ver
 
 template<class T>
 typename contenitore<T>::Nodo* contenitore<T>::remove_node(Nodo* x) {
-    Nodo* provv=x;
-    if(x->prec){
-        x->prec->next=x->next;
-        delete provv;
-        return x;
+Nodo* provv=x->next;
+x.obj=x->next.obj;
+x->next=x->next->next;
+delete provv;
+return x;
+    //Nodo* provv=x;
+    //if(x->prec){
+        //x->prec->next=x->next;
+        //delete provv;
+        //return x;
     }
 
 }
