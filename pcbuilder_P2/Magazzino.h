@@ -7,18 +7,21 @@
 
 class Magazzino {
 private:
-    contenitore<Smartptr<Item>> lista_ogg;
-    contenitore<Item*> lista_filtrata;
+    contenitore<Smartptr<Item>> *lista_ogg;
+    contenitore<Item*> *lista_filtrata;
 public:
-    void add_compoenente (Item*);
+    Magazzino(const Smartptr<Item>&);
+    void add_compoenente (const Smartptr<Item>&);
     void filtroMarca(std::string);
     void filtroCpu();
-    /*void filtroGpu();
+    contenitore<Item*>* get_filtro();
+    contenitore<Smartptr<Item>>* get_lista();
+    void filtroGpu();
     void filtroCase();
     void filtroSchedaMadre();
-    void filtroPsu();
-    void filtroPrezzo();
-    */
+//    void filtroPsu();
+//    void filtroPrezzo();
+
 };
 
 #endif // MAGAZZINO_H

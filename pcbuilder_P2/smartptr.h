@@ -6,7 +6,7 @@ class Smartptr {
 private:
     T* ptr;
 public:
-    Smartptr(const T*);
+    Smartptr(T*);
     Smartptr(const Smartptr&);
     ~Smartptr();
     T& operator *() const;
@@ -21,15 +21,17 @@ public:
 Smartptr<T>::Smartptr (const T* p) : ptr(p ? new T(*p) : 0) {} //da verificare
 */
 template <class T>
-Smartptr<T>::Smartptr(const T* p) : ptr(p ? (p) : 0) {}
+Smartptr<T>::Smartptr( T* p) : ptr(p ? p : 0) {}
 
 template <class T>
 Smartptr<T>::Smartptr(const Smartptr& o){
     if(o.ptr != nullptr){
         if(ptr) delete ptr;
-        ptr=new T(*(o.ptr));
+        //ptr=new T(*(o.ptr));
+        ptr=o.ptr->clone();
     }
 }
+
 template <class T>
 Smartptr<T>::~Smartptr() {
     delete ptr;

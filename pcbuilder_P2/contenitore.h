@@ -27,6 +27,8 @@ public:
         friend class contenitore;
     private:
         Nodo* p;
+        Iteratore();
+        Iteratore(Nodo*);
     public:
 
         Iteratore& operator++();
@@ -44,6 +46,8 @@ public:
         friend class contenitore;
     private:
         const Nodo* p;
+        Const_iteratore();
+        Const_iteratore(Nodo*);
     public:
         Const_iteratore& operator++();
         Const_iteratore operator ++(int);
@@ -51,18 +55,21 @@ public:
         Const_iteratore operator--(int);
         const T& operator*()const;
         const T* operator->() const;
-        bool operator== (const Iteratore&) const;
-        bool operator!= (const Iteratore&) const;
+        bool operator== (const Const_iteratore&) const;
+        bool operator!= (const Const_iteratore&) const;
 
     };
 
     contenitore(const T&);
+    contenitore(T*);
     ~contenitore();
     Nodo& operator [](int);
     void add_coda(const T&);
     void add_inizio(const T&);
-    Iteratore begin() const;
-    Iteratore end() const;
+    Iteratore begin();
+    Iteratore end();
+    Const_iteratore inizio() const;
+    Const_iteratore fine() const ;
     T get_last() const;  // solo per testing
     Nodo* remove_node(Nodo*);
 
@@ -81,7 +88,10 @@ T contenitore<T>::Nodo::get_obj() const {
 
 
 template <class T>
-contenitore<T>::contenitore(const T& x) : first(new Nodo(x,0,0)) {last=first; }; // da verificare
+contenitore<T>::contenitore(const T& x) : first(new Nodo(x,0,0)) {last=first; };// da verificare
+
+template <class T>
+contenitore<T>::contenitore( T* x) : first(new Nodo(x,0,0)) {last=first; };
 
 template <class T>
 contenitore<T>::~contenitore() {delete first;};
@@ -114,18 +124,52 @@ T contenitore<T>::get_last() const {
     return last->obj;
 };
 
+template<class T>
+contenitore<T>::Iteratore::Iteratore() : p(nullptr) {}
+
+template<class T>
+contenitore<T>::Const_iteratore::Const_iteratore() : p(nullptr) {}
+
+template<class T>
+contenitore<T>::Iteratore::Iteratore(Nodo* x) : p(x) {}
+
+template<class T>
+contenitore<T>::Const_iteratore::Const_iteratore(Nodo* x) : p(x) {}
+
 template <class T>
-typename contenitore<T>::Iteratore contenitore<T>::begin() const {
-    Iteratore punt;
+typename contenitore<T>::Iteratore contenitore<T>::begin() {
+   /* Iteratore ciao;
     punt.p=first;
+    */
+    Iteratore punt (first);
     return punt;
 }
 
 template <class T>
-typename contenitore<T>::Iteratore contenitore<T>::end() const { //da capire come gestire end iteratore
-    Iteratore punt;
+typename contenitore<T>::Iteratore contenitore<T>::end() { //da capire come gestire end iteratore
+    /*Iteratore punt;
+    punt.p=last;
+    return punt;*/
+
+    return Iteratore(nullptr);
+}
+
+template <class T>
+typename contenitore<T>::Const_iteratore contenitore<T>::inizio() const  {
+//    Const_iteratore punt;
+//        punt.p=first;
+//        return punt;
+    Const_iteratore punt(first);
+    return punt;
+}
+
+template <class T>
+typename contenitore<T>::Const_iteratore contenitore<T>::fine() const  { //da capire come gestire end iteratore
+    /*Iteratore punt;
     punt.p=last;
     return punt;
+    */
+    return Const_iteratore(nullptr);
 }
 
 template<class T>
@@ -134,16 +178,19 @@ typename contenitore<T>::Iteratore& contenitore<T>::Iteratore::operator++(){
         p=p->next;
         return *this;
     }
+//    else{
+//        return Iteratore(nullptr);
+//    }
 }
 
 template<class T>
 typename contenitore<T>::Iteratore contenitore<T>::Iteratore::operator++(int){
-    Iteratore aux;
+    Iteratore aux(nullptr);
     if(p) {
         aux=*this;
         p=p->next;
-        return aux;
     }
+    return aux;
 }
 
 template<class T>
@@ -156,12 +203,13 @@ typename contenitore<T>::Iteratore& contenitore<T>::Iteratore::operator--(){
 
 template<class T>
 typename contenitore<T>::Iteratore contenitore<T>::Iteratore::operator--(int){
-    Iteratore aux;
+    Iteratore aux(nullptr);
     if(p) {
         aux=*this;
         p=p->prec;
-        return aux;
     }
+    return aux;
+
 }
 
 template<class T>
@@ -184,7 +232,7 @@ typename contenitore<T>::Const_iteratore& contenitore<T>::Const_iteratore::opera
 
 template<class T>
 typename contenitore<T>::Const_iteratore contenitore<T>::Const_iteratore::operator++(int){
-    Iteratore aux;
+    Const_iteratore aux;
     if(p) {
         aux=*this;
         p=p->next;
@@ -227,22 +275,22 @@ bool contenitore<T>::Nodo::operator==(const Nodo& o) const { // per funzionare b
 
 template<class T>
 bool contenitore<T>::Iteratore::operator==(const Iteratore& i) const { // da verificare
-    return this==&i;
+    return this->p==i.p;
 }
 
 template<class T>
 bool contenitore<T>::Iteratore::operator!=(const Iteratore& i) const { // da verificare
-    return this!=&i;
+    return this->p!=i.p;
 }
 
 template<class T>
-bool contenitore<T>::Const_iteratore::operator==(const Iteratore& i) const { // da verificare
-    return this==&i;
+bool contenitore<T>::Const_iteratore::operator==(const Const_iteratore& i) const { // da verificare
+    return this->p==i.p;
 }
 
 template<class T>
-bool contenitore<T>::Const_iteratore::operator!=(const Iteratore& i) const { // da verificare
-    return this!=&i;
+bool contenitore<T>::Const_iteratore::operator!=(const Const_iteratore& i) const { // da verificare
+    return this->p!=i.p;
 }
 
 template<class T>

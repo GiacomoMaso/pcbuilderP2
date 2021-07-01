@@ -13,7 +13,7 @@ class Item{
     //virtual double price_modify () const = 0;
     std::string get_name() const;
     //virtual std::string build_name () const = 0;
-
+    virtual ~Item() {};
 
     //virtual double get_price () const = 0;
 

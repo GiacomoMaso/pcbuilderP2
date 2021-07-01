@@ -16,6 +16,7 @@ public:
     bool operator==(const Componente&) const;
     friend std::ostream& operator<<( std::ostream&, const Componente& );
     //virtual std::string build_name() const;
+    std::string get_marca() const;
 
 };
 
