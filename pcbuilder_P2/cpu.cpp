@@ -1,7 +1,7 @@
 #include "cpu.h"
 
-Cpu::Cpu(std::string na, unsigned int q, std::string m, std::string mo,  unsigned int p, std::string se, unsigned int gh, unsigned int core, std::string i_a, std::string soc )
-    : Componente(na,q,m,mo,p), serie(se), ghz(gh), core_number(core), intel_AMD(i_a), socket(soc) {}
+Cpu::Cpu(std::string na, unsigned int q, std::string m, std::string mo,  unsigned int p, unsigned int re, std::string se, unsigned int gh, unsigned int core, std::string i_a, std::string soc )
+    : Componente(na,q,m,mo,p,re), serie(se), ghz(gh), core_number(core), intel_AMD(i_a), socket(soc) {}
 
 unsigned int Cpu::get_ghz () const{
     return ghz;

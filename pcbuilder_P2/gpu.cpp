@@ -1,7 +1,7 @@
 #include "gpu.h"
 
-Gpu::Gpu(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p, std::string vari, unsigned int v, unsigned int g, unsigned int type)
-    : Componente(na,q,m,mo,p), variante(vari), vram(v), gpu_clock(g), type_ram(type) {}
+Gpu::Gpu(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p,unsigned int re, std::string vari, unsigned int v, unsigned int g, unsigned int type)
+    : Componente(na,q,m,mo,p,re), variante(vari), vram(v), gpu_clock(g), type_ram(type) {}
 
 unsigned int Gpu::get_vram() const{
     return vram;

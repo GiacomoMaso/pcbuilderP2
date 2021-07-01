@@ -10,7 +10,7 @@ private:
     unsigned int nvme_port;
 
 public:
-    SchedaMadre(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0, std::string ="", std::string ="", unsigned int =0, unsigned int=0);
+    SchedaMadre(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0,unsigned int =0, std::string ="", std::string ="", unsigned int =0, unsigned int=0);
 };
 
 #endif // SCHEDAMADRE_H

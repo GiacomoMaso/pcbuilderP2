@@ -1,7 +1,7 @@
 #include "psu.h"
 
-Psu::Psu(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p, unsigned int w, unsigned int r, std::string mod)
-    : Componente(na,q,m,mo,p), watt(w), rating(r), modularità(mod) {}
+Psu::Psu(std::string na,unsigned int q, std::string m, std::string mo,  unsigned int p,unsigned int re, unsigned int w, unsigned int r, std::string mod)
+    : Componente(na,q,m,mo,p,re), watt(w), rating(r), modularità(mod) {}
 
 unsigned int Psu::get_watt() const{
     return watt;

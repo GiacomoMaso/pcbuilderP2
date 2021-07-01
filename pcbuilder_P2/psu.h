@@ -9,7 +9,7 @@ private:
     unsigned int rating;
     std::string modularità;
 public:
-    Psu(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0, unsigned int =0, unsigned int =0, std::string ="");
+    Psu(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0,unsigned int =0, unsigned int =0, unsigned int =0, std::string ="");
     unsigned int get_watt() const;
     unsigned int get_rating() const;
     std::string get_mod() const;

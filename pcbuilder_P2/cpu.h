@@ -11,7 +11,7 @@ private:
     std::string intel_AMD;
     std::string socket;
 public:
-    Cpu(std::string ="",unsigned int q=0, std::string ="", std::string ="", unsigned int p=0 ,std::string ="", unsigned int =0, unsigned int =0, std::string ="", std::string ="" );
+    Cpu(std::string ="",unsigned int q=0, std::string ="", std::string ="", unsigned int p=0 , unsigned int re=0, std::string ="", unsigned int =0, unsigned int =0, std::string ="", std::string ="" );
     virtual Cpu* clone() const;
     unsigned int get_ghz () const;
     unsigned int get_core_number () const;
