@@ -23,32 +23,38 @@ std::string Componente::get_marca() const {
 
 unsigned int Componente::product_score() const{
     unsigned int score=0;
-    if(realese_date ==2021){
+
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    unsigned int year=1900+ ltm->tm_year;
+    std::cout<<year;
+
+    if(realese_date ==year){
         score=10;
     }
-    else if(realese_date == 2020){
+    else if(realese_date == year-1){
         score=9;
     }
-    else if(realese_date > 2018 && realese_date < 2020){
+    else if(realese_date >= year-3 && realese_date < year-1){
         score=8;
     }
 
-    else if(realese_date > 2016 && realese_date < 2018){
+    else if(realese_date >= year-4 && realese_date < year-3){
         score=7;
     }
 
-    else if(realese_date > 2013 && realese_date < 2016){
+    else if(realese_date >= year-9 && realese_date < year-4){
         score=6;
     }
 
-    else if(realese_date > 2010 && realese_date < 2013){
+    else if(realese_date >= year-11 && realese_date < year-9){
         score=5;
     }
 
-    else if(realese_date > 2005 && realese_date < 2010){
+    else if(realese_date >= year-15 && realese_date < year-11){
         score=4;
     }
-    else if(realese_date > 2000 && realese_date < 2005){
+    else if(realese_date >= year-20 && realese_date < year-15){
         score=3;
     }
 

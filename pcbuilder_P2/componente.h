@@ -2,6 +2,7 @@
 #define COMPONENTE_H
 #include<iostream>
 #include "item.h"
+#include <ctime>
 
 class Componente : public Item {
 private:

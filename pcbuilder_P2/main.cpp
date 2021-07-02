@@ -54,11 +54,13 @@ int main()
 
 
 
-    tony.filtroSchedaMadre();
+    //tony.filtroSchedaMadre();
 
-    contenitore<Item*>* ape=tony.get_filtro();
+    //contenitore<Item*>* ape=tony.get_filtro();
     //contenitore<Smartptr<Item>>* test=tony.get_lista();
     //Smartptr<Item> prova=test->get_last();
+
+
 
 
 
