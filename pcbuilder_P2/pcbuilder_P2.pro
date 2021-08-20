@@ -1,7 +1,12 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+#TEMPLATE = app
+#CONFIG += console c++11
+#CONFIG -= app_bundle
+#CONFIG -= qt
+
 
 SOURCES += \
         Magazzino.cpp \
@@ -12,6 +17,7 @@ SOURCES += \
         gpu.cpp \
         item.cpp \
         main.cpp \
+        mainwindow.cpp \
         memoria.cpp \
         psu.cpp \
         ram.cpp \
@@ -29,6 +35,7 @@ HEADERS += \
     cpu.h \
     gpu.h \
     item.h \
+    mainwindow.h \
     memoria.h \
     psu.h \
     ram.h \
