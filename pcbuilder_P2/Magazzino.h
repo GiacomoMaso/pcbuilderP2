@@ -19,7 +19,7 @@ public:
     void filtroGpu();
     void filtroCase();
     void filtroSchedaMadre();
-//    void filtroPsu();
+    void filtroPsu();
 //    void filtroPrezzo();
 
 };

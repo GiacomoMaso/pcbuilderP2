@@ -8,6 +8,7 @@
 #include "componente.h"
 #include "Magazzino.h"
 #include "schedamadre.h"
+#include "psu.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ int main()
     Gpu* g2=new Gpu("gpu",3, "Nvidia", "1070", 13 , 2012, "random", 16, 51);
     Gpu* g3=new Gpu("gpu",3, "Nvidia", "1080", 13 , 2012, "random", 16, 51);
     Gpu* g4=new Gpu("gpu",3, "Nvidia", "Titan", 13 , 2012, "random", 16, 51);
-    Case* g5=new Case("case",3, "ciao", "tony",14, 2012, "ggg", "abc");
+    Psu* g5=new Psu("psu",3, "Nvidia", "Titan", 13 , 2012, 16, 89, "si");
     SchedaMadre* g6=new SchedaMadre( "SchedaMadre" , 3 , "bello", "mario", 25, 2012,"abc", "ccdf", 23, 28);
 
     Smartptr<Item> ciao(a1);
@@ -54,7 +55,7 @@ int main()
 
 
 
-    //tony.filtroSchedaMadre();
+    tony.filtroPsu();
 
     //contenitore<Item*>* ape=tony.get_filtro();
     //contenitore<Smartptr<Item>>* test=tony.get_lista();

@@ -8,6 +8,7 @@
 #include "case.h"
 #include "componente.h"
 #include "schedamadre.h"
+#include "psu.h"
 
 Magazzino::Magazzino(const Smartptr<Item>& p) : lista_ogg(new contenitore<Smartptr<Item>>(p)) {}
 
@@ -84,6 +85,28 @@ void Magazzino::filtroSchedaMadre() {
     for( contenitore<Smartptr<Item>>::Const_iteratore it=lista_ogg->inizio(); it!=lista_ogg->fine(); it++){
         Item* provv=*it;
         if(dynamic_cast<SchedaMadre*>(provv)){
+            if(lista_filtrata) {
+                lista_filtrata->add_coda(provv);
+            }
+            else{
+                lista_filtrata=new contenitore<Item*>(provv);
+            }
+        }
+    }
+
+
+    for( contenitore<Item*>::Const_iteratore it=lista_filtrata->inizio(); it!=lista_filtrata->fine() ; it++){
+            std::cout<<(*it)->get_name()<<std::endl;
+    }
+
+}
+
+
+void Magazzino::filtroPsu() {
+
+    for( contenitore<Smartptr<Item>>::Const_iteratore it=lista_ogg->inizio(); it!=lista_ogg->fine(); it++){
+        Item* provv=*it;
+        if(dynamic_cast<Psu*>(provv)){
             if(lista_filtrata) {
                 lista_filtrata->add_coda(provv);
             }
