@@ -13,6 +13,7 @@ SOURCES += \
         case.cpp \
         componente.cpp \
         contenitore.cpp \
+        controller.cpp \
         cpu.cpp \
         gpu.cpp \
         item.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     case.h \
     componente.h \
     contenitore.h \
+    controller.h \
     cpu.h \
     gpu.h \
     item.h \

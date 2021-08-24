@@ -4,6 +4,8 @@
 #include "item.h"
 #include "smartptr.h"
 #include "cpu.h"
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
 
 class Magazzino {
 private:
@@ -20,6 +22,7 @@ public:
     void filtroCase();
     void filtroSchedaMadre();
     void filtroPsu();
+
 //    void filtroPrezzo();
 
 };

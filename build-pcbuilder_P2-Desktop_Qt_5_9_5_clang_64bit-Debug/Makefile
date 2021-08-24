@@ -54,6 +54,7 @@ SOURCES       = ../pcbuilder_P2/Magazzino.cpp \
 		../pcbuilder_P2/case.cpp \
 		../pcbuilder_P2/componente.cpp \
 		../pcbuilder_P2/contenitore.cpp \
+		../pcbuilder_P2/controller.cpp \
 		../pcbuilder_P2/cpu.cpp \
 		../pcbuilder_P2/gpu.cpp \
 		../pcbuilder_P2/item.cpp \
@@ -66,11 +67,12 @@ SOURCES       = ../pcbuilder_P2/Magazzino.cpp \
 		../pcbuilder_P2/schedamadre.cpp \
 		../pcbuilder_P2/sconto.cpp \
 		../pcbuilder_P2/scontrino.cpp \
-		../pcbuilder_P2/smartptr.cpp 
+		../pcbuilder_P2/smartptr.cpp moc_mainwindow.cpp
 OBJECTS       = Magazzino.o \
 		case.o \
 		componente.o \
 		contenitore.o \
+		controller.o \
 		cpu.o \
 		gpu.o \
 		item.o \
@@ -83,7 +85,8 @@ OBJECTS       = Magazzino.o \
 		schedamadre.o \
 		sconto.o \
 		scontrino.o \
-		smartptr.o
+		smartptr.o \
+		moc_mainwindow.o
 DIST          = ../../../App/Qt/5.9.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../App/Qt/5.9.5/clang_64/mkspecs/qdevice.pri \
 		../../../App/Qt/5.9.5/clang_64/mkspecs/features/device_config.prf \
@@ -247,6 +250,7 @@ DIST          = ../../../App/Qt/5.9.5/clang_64/mkspecs/features/spec_pre.prf \
 		../pcbuilder_P2/case.h \
 		../pcbuilder_P2/componente.h \
 		../pcbuilder_P2/contenitore.h \
+		../pcbuilder_P2/controller.h \
 		../pcbuilder_P2/cpu.h \
 		../pcbuilder_P2/gpu.h \
 		../pcbuilder_P2/item.h \
@@ -262,6 +266,7 @@ DIST          = ../../../App/Qt/5.9.5/clang_64/mkspecs/features/spec_pre.prf \
 		../pcbuilder_P2/case.cpp \
 		../pcbuilder_P2/componente.cpp \
 		../pcbuilder_P2/contenitore.cpp \
+		../pcbuilder_P2/controller.cpp \
 		../pcbuilder_P2/cpu.cpp \
 		../pcbuilder_P2/gpu.cpp \
 		../pcbuilder_P2/item.cpp \
@@ -649,8 +654,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../App/Qt/5.9.5/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.h ../pcbuilder_P2/case.h ../pcbuilder_P2/componente.h ../pcbuilder_P2/contenitore.h ../pcbuilder_P2/cpu.h ../pcbuilder_P2/gpu.h ../pcbuilder_P2/item.h ../pcbuilder_P2/mainwindow.h ../pcbuilder_P2/memoria.h ../pcbuilder_P2/psu.h ../pcbuilder_P2/ram.h ../pcbuilder_P2/rom.h ../pcbuilder_P2/schedamadre.h ../pcbuilder_P2/sconto.h ../pcbuilder_P2/scontrino.h ../pcbuilder_P2/smartptr.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.cpp ../pcbuilder_P2/case.cpp ../pcbuilder_P2/componente.cpp ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/gpu.cpp ../pcbuilder_P2/item.cpp ../pcbuilder_P2/main.cpp ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/psu.cpp ../pcbuilder_P2/ram.cpp ../pcbuilder_P2/rom.cpp ../pcbuilder_P2/schedamadre.cpp ../pcbuilder_P2/sconto.cpp ../pcbuilder_P2/scontrino.cpp ../pcbuilder_P2/smartptr.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.h ../pcbuilder_P2/case.h ../pcbuilder_P2/componente.h ../pcbuilder_P2/contenitore.h ../pcbuilder_P2/controller.h ../pcbuilder_P2/cpu.h ../pcbuilder_P2/gpu.h ../pcbuilder_P2/item.h ../pcbuilder_P2/mainwindow.h ../pcbuilder_P2/memoria.h ../pcbuilder_P2/psu.h ../pcbuilder_P2/ram.h ../pcbuilder_P2/rom.h ../pcbuilder_P2/schedamadre.h ../pcbuilder_P2/sconto.h ../pcbuilder_P2/scontrino.h ../pcbuilder_P2/smartptr.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.cpp ../pcbuilder_P2/case.cpp ../pcbuilder_P2/componente.cpp ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/gpu.cpp ../pcbuilder_P2/item.cpp ../pcbuilder_P2/main.cpp ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/psu.cpp ../pcbuilder_P2/ram.cpp ../pcbuilder_P2/rom.cpp ../pcbuilder_P2/schedamadre.cpp ../pcbuilder_P2/sconto.cpp ../pcbuilder_P2/scontrino.cpp ../pcbuilder_P2/smartptr.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -682,8 +687,16 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../App/Qt/5.9.5/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h ../../../App/Qt/5.9.5/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_mainwindow.cpp
+moc_mainwindow.cpp: ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../pcbuilder_P2/mainwindow.h \
+		moc_predefs.h \
+		../../../App/Qt/5.9.5/clang_64/bin/moc
+	/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/mkspecs/macx-clang -I/Users/giacomomason/Documents/GitHub/pcbuilderP2/pcbuilder_P2 -I/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/lib/QtGui.framework/Headers -I/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.5/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/lib ../pcbuilder_P2/mainwindow.h -o moc_mainwindow.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all:
@@ -696,7 +709,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -724,6 +737,20 @@ componente.o: ../pcbuilder_P2/componente.cpp ../pcbuilder_P2/componente.h \
 contenitore.o: ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/contenitore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o contenitore.o ../pcbuilder_P2/contenitore.cpp
 
+controller.o: ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/controller.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../pcbuilder_P2/Magazzino.h \
+		../pcbuilder_P2/contenitore.h \
+		../pcbuilder_P2/item.h \
+		../pcbuilder_P2/smartptr.h \
+		../pcbuilder_P2/cpu.h \
+		../pcbuilder_P2/componente.h \
+		../pcbuilder_P2/mainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o ../pcbuilder_P2/controller.cpp
+
 cpu.o: ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/cpu.h \
 		../pcbuilder_P2/componente.h \
 		../pcbuilder_P2/item.h
@@ -738,10 +765,14 @@ item.o: ../pcbuilder_P2/item.cpp ../pcbuilder_P2/item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o item.o ../pcbuilder_P2/item.cpp
 
 main.o: ../pcbuilder_P2/main.cpp ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../pcbuilder_P2/main.cpp
 
-mainwindow.o: ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/mainwindow.h
+mainwindow.o: ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/mainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../pcbuilder_P2/mainwindow.cpp
 
 memoria.o: ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/memoria.h \
@@ -783,6 +814,9 @@ scontrino.o: ../pcbuilder_P2/scontrino.cpp ../pcbuilder_P2/scontrino.h \
 
 smartptr.o: ../pcbuilder_P2/smartptr.cpp ../pcbuilder_P2/smartptr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smartptr.o ../pcbuilder_P2/smartptr.cpp
+
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
 
