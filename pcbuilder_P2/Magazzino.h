@@ -6,6 +6,7 @@
 #include "cpu.h"
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
+#include <QFile>
 
 class Magazzino {
 private:
@@ -22,6 +23,7 @@ public:
     void filtroCase();
     void filtroSchedaMadre();
     void filtroPsu();
+    void load_database();
 
 //    void filtroPrezzo();
 

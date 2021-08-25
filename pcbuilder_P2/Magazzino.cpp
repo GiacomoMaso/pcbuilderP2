@@ -131,3 +131,7 @@ contenitore<Item*>* Magazzino::get_filtro() {
 contenitore<Smartptr<Item>>* Magazzino::get_lista() {
     return lista_ogg;
 }
+
+void Magazzino::load_database() {
+
+}
