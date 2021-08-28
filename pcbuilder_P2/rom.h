@@ -8,7 +8,7 @@ private:
 
     double mb_write;
     double mb_read;
-    double size;
+    double size;   //ipotetica string per unita di misura
 public:
     Rom(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0,unsigned int =0, std::string ="", unsigned int=0, double=0, double=0, double=0);
     double get_mb_write() const;

@@ -692,6 +692,14 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenu \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../pcbuilder_P2/mainwindow.h \
 		moc_predefs.h \
 		../../../App/Qt/5.9.5/clang_64/bin/moc
@@ -720,9 +728,21 @@ Magazzino.o: ../pcbuilder_P2/Magazzino.cpp ../pcbuilder_P2/Magazzino.h \
 		../pcbuilder_P2/cpu.h \
 		../pcbuilder_P2/componente.h \
 		../pcbuilder_P2/gpu.h \
-		../pcbuilder_P2/case.h \
+		../pcbuilder_P2/psu.h \
 		../pcbuilder_P2/schedamadre.h \
-		../pcbuilder_P2/psu.h
+		../pcbuilder_P2/case.h \
+		../pcbuilder_P2/memoria.h \
+		../pcbuilder_P2/ram.h \
+		../pcbuilder_P2/rom.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamReader \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Magazzino.o ../pcbuilder_P2/Magazzino.cpp
 
 case.o: ../pcbuilder_P2/case.cpp ../pcbuilder_P2/case.h \
@@ -740,15 +760,39 @@ contenitore.o: ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/contenitore.h
 controller.o: ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/controller.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		../pcbuilder_P2/Magazzino.h \
-		../pcbuilder_P2/contenitore.h \
-		../pcbuilder_P2/item.h \
-		../pcbuilder_P2/smartptr.h \
-		../pcbuilder_P2/cpu.h \
-		../pcbuilder_P2/componente.h \
 		../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenu \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../pcbuilder_P2/gpu.h \
+		../pcbuilder_P2/componente.h \
+		../pcbuilder_P2/item.h \
+		../pcbuilder_P2/case.h \
+		../pcbuilder_P2/smartptr.h \
+		../pcbuilder_P2/contenitore.h \
+		../pcbuilder_P2/Magazzino.h \
+		../pcbuilder_P2/cpu.h \
+		../pcbuilder_P2/psu.h \
+		../pcbuilder_P2/schedamadre.h \
+		../pcbuilder_P2/memoria.h \
+		../pcbuilder_P2/ram.h \
+		../pcbuilder_P2/rom.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamReader \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o ../pcbuilder_P2/controller.cpp
 
 cpu.o: ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/cpu.h \
@@ -767,12 +811,54 @@ item.o: ../pcbuilder_P2/item.cpp ../pcbuilder_P2/item.h
 main.o: ../pcbuilder_P2/main.cpp ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../pcbuilder_P2/controller.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../pcbuilder_P2/mainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenu \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../pcbuilder_P2/gpu.h \
+		../pcbuilder_P2/componente.h \
+		../pcbuilder_P2/item.h \
+		../pcbuilder_P2/case.h \
+		../pcbuilder_P2/smartptr.h \
+		../pcbuilder_P2/contenitore.h \
+		../pcbuilder_P2/Magazzino.h \
+		../pcbuilder_P2/cpu.h \
+		../pcbuilder_P2/psu.h \
+		../pcbuilder_P2/schedamadre.h \
+		../pcbuilder_P2/memoria.h \
+		../pcbuilder_P2/ram.h \
+		../pcbuilder_P2/rom.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamReader \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../pcbuilder_P2/main.cpp
 
 mainwindow.o: ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenuBar \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenubar.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMenu \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QBoxLayout \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../pcbuilder_P2/mainwindow.cpp
 
 memoria.o: ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/memoria.h \

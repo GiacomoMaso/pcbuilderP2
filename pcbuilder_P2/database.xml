@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <Magazzino>
+<Gpu>
+  <nome>Radeon x1</nome>
+  <quantità>2</quantità>
+  <marca>ati</marca>
+  <modello>5700xt</modello>
+  <price>500</price>
+  <realese_date>2018</realese_date>
+  <variante>strix</variante>
+  <vram>500</vram>
+  <gpu_clock>800</gpu_clock>
+  <type_ram>6</type_ram>
+
+</Gpu>
+<Gpu>
+  <nome>nvdia 1060</nome>
+  <quantità>2</quantità>
+  <marca>nvidia</marca>
+  <modello>1060</modello>
+  <price>500</price>
+  <realese_date>2018</realese_date>
+  <variante>zotac</variante>
+  <vram>500</vram>
+  <gpu_clock>800</gpu_clock>
+  <type_ram>6</type_ram>
+</Gpu>
+<Gpu>
+  <nome>nvdia 1080</nome>
+  <quantità>2</quantità>
+  <marca>nvidia</marca>
+  <modello>1080</modello>
+  <price>500</price>
+  <realese_date>2018</realese_date>
+  <variante>zotac</variante>
+  <vram>500</vram>
+  <gpu_clock>800</gpu_clock>
+  <type_ram>6</type_ram>
+</Gpu>
+
+<Cpu>
+  <nome>intel</nome>
+  <quantità>2</quantità>
+  <marca>intel</marca>
+  <modello>7700k</modello>
+  <price>400</price>
+  <realese_date>2018</realese_date>
+  <serie>7</serie>
+  <ghz>4000</ghz>
+  <core_number>4</core_number>
+  <intel_AMD>intel</intel_AMD>
+  <socket>LGA1100</socket>
+</Cpu>
+
+<Psu>
+  <nome>alimenta</nome>
+  <quantità>2</quantità>
+  <marca>corsair</marca>
+  <modello>deluxe</modello>
+  <price>120</price>
+  <realese_date>2019</realese_date>
+  <watt>500</watt>
+  <rating>90</rating>
+  <modularità>Si</modularità>
+</Psu>
+
+<SchedaMadre>
+  <nome>Msi z90</nome>
+  <quantità>2</quantità>
+  <marca>Msi</marca>
+  <modello>z90</modello>
+  <price>220</price>
+  <realese_date>2017</realese_date>
+  <grandezza>ATX</grandezza>
+  <socket_mb>LGA702</socket_mb>
+  <sata_port>4</sata_port>
+  <nvme_port>5</nvme_port>
+</SchedaMadre>
+
+<Case>
+  <nome>case noctua</nome>
+  <quantità>2</quantità>
+  <marca>Noctua</marca>
+  <modello>31</modello>
+  <price>30</price>
+  <realese_date>2017</realese_date>
+  <case_dim>full tower</case_dim>
+  <mb_supported>ATX</mb_supported>
+</Case>
+
+<Ram>
+  <nome>Corsair vengeance</nome>
+  <quantità>2</quantità>
+  <marca>Corsair</marca>
+  <modello>vengeance</modello>
+  <price>120</price>
+  <realese_date>2020</realese_date>
+  <type_memory>DDR4</type_memory>
+  <capacity>16</capacity>
+  <clock>3200</clock>
+  <latency>32</latency>
+  <num_per_pacco>2</num_per_pacco>
+</Ram>
+
+<Rom>
+  <nome>samsugng evo</nome>
+  <quantità>2</quantità>
+  <marca>Samsung</marca>
+  <modello>812</modello>
+  <price>150</price>
+  <realese_date>2020</realese_date>
+  <type_memory>SSD</type_memory>
+  <capacity>500</capacity>
+  <mb_write>12.8</mb_write>
+  <mb_read>16.9</mb_read>
+  <size>4032.8</size>
+</Rom>
+
+
+</Magazzino>
