@@ -1,27 +1,33 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
-#include <QObject>
-#include <iostream>
+
 #include "mainwindow.h"
-#include "gpu.h"
-#include "case.h"
-#include "componente.h"
-#include "item.h"
-#include "smartptr.h"
-#include "contenitore.h"
+
+
 #include "Magazzino.h"
+#include "listamagazzinoview.h"
 
 
+class Controller : public QObject{
+Q_OBJECT
 
-class Controller : public QObject
-{
+
 private:
     Magazzino* m;
     Mainwindow* view;
+    ListaMagazzinoView* lista_vista;
+    QStringList* list;
+
+
 
 public:
-    Controller();
+    Controller(QStringList* list=nullptr);
     void prova();
+
+public slots:
+    //void listaMagazzinoView();
+    void loadMagazzinoView();
+
 };
 
 #endif // CONTROLLER_H

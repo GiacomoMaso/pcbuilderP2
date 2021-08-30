@@ -1,20 +1,22 @@
 #include "mainwindow.h"
 
-Mainwindow::Mainwindow(QWidget *p) : QWidget(p)
+Mainwindow::Mainwindow(QWidget *parent) : QMainWindow(parent)
 {
     setWindowTitle("Pc Builder");
     setMinimumSize(800, 600);
-    QVBoxLayout* layout= new QVBoxLayout;
-    setLayout(layout);
+    QWidget* central=new QWidget(this);
+   QVBoxLayout* layout= new QVBoxLayout;
+
+
 
 
 
     QMenuBar* menuBar=new QMenuBar(this);
     QMenu* carica=new QMenu("Carica", menuBar);
     QMenu* salva= new QMenu("Salva", menuBar);
-    QPushButton* add_obj= new QPushButton("Aggiungi Componente", this);
-    QPushButton* delete_obj= new QPushButton("Elimina Componente", this);
-    QPushButton* view_obj= new QPushButton("Visualizza Componenti", this);
+    add_obj=new QPushButton("Aggiungi Componente", this);
+    delete_obj= new QPushButton("Elimina Componente", this);
+    view_obj= new QPushButton("Visualizza Componenti", this);
     add_obj->setMaximumSize(400,100);
     delete_obj->setMaximumSize(400,100);
     view_obj->setMaximumSize(400,100);
@@ -24,7 +26,7 @@ Mainwindow::Mainwindow(QWidget *p) : QWidget(p)
 
     menuBar->addMenu(carica);
     menuBar->addMenu(salva);
-    menuBar->setNativeMenuBar(false);
+   menuBar->setNativeMenuBar(false);
     menuBar->setGeometry(0,0,800,30);
 
 
@@ -36,6 +38,13 @@ Mainwindow::Mainwindow(QWidget *p) : QWidget(p)
     layout->setAlignment(view_obj, Qt::AlignHCenter);
 
 
+    central->setLayout(layout);
+    setCentralWidget(central);
+    setMenuWidget(menuBar);
+
+   connect(view_obj, SIGNAL(clicked()), this, SIGNAL(visualizzaComponentiPressed()));
+
+
 
 
 
@@ -43,3 +52,20 @@ Mainwindow::Mainwindow(QWidget *p) : QWidget(p)
 
 
 }
+
+void Mainwindow::openSubview(){
+
+    hide();
+    prova->show();
+
+}
+
+
+
+
+
+
+
+
+
+

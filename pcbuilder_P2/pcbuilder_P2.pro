@@ -18,6 +18,7 @@ SOURCES += \
         cpu.cpp \
         gpu.cpp \
         item.cpp \
+        listamagazzinoview.cpp \
         main.cpp \
         mainwindow.cpp \
         memoria.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     cpu.h \
     gpu.h \
     item.h \
+    listamagazzinoview.h \
     mainwindow.h \
     memoria.h \
     psu.h \

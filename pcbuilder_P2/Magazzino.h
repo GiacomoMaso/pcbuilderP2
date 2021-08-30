@@ -17,6 +17,8 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDebug>
+#include <QStringList>
+#include <QString>
 
 class Magazzino {
 private:
@@ -31,6 +33,7 @@ public:
     void filtroCpu();
     contenitore<Item*>* get_filtro();
     contenitore<Smartptr<Item>>* get_lista();
+    QStringList* get_lista_view();
     void filtroGpu();
     void filtroCase();
     void filtroSchedaMadre();

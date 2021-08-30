@@ -241,7 +241,6 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                          Cpu* provv=new Cpu(nome,quantità,marca,modello,price,realese_date,serie,ghz,core_number,intel_AMD,socket);
                          Smartptr<Item> obj(provv);
-                         add_compoenente(obj);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
                       }
@@ -349,7 +348,6 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                          SchedaMadre* provv=new SchedaMadre(nome,quantità,marca,modello,price,realese_date,grandezza,socket_mb, sata_port, nvme_port);
                          Smartptr<Item> obj(provv);
-                         add_compoenente(obj);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
                       }
@@ -397,7 +395,6 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                          Case* provv=new Case(nome,quantità,marca,modello,price,realese_date,case_dim,mb_supported);
                          Smartptr<Item> obj(provv);
-                         add_compoenente(obj);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
                       }
@@ -457,7 +454,6 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                           Ram* provv=new Ram(nome,quantità,marca,modello,price,realese_date,type_memory,capacity,clock,latency,num_per_pacco);
                           Smartptr<Item> obj(provv);
-                          add_compoenente(obj);
                           if(lista_ogg) add_compoenente(obj);
                           else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
                        }
@@ -519,7 +515,6 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                           Rom* provv=new Rom(nome,quantità,marca,modello,price,realese_date,type_memory,capacity,mb_write,mb_read, size);
                           Smartptr<Item> obj(provv);
-                          add_compoenente(obj);
                           if(lista_ogg) add_compoenente(obj);
                           else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
                        }
@@ -532,6 +527,16 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
     for(contenitore<Smartptr<Item>>::Iteratore it=prova->begin(); it !=prova->end(); it++){
         std::cout<<(*it)->get_name()<<std::endl;}
 
+}
+
+QStringList* Magazzino::get_lista_view(){
+    QStringList* list=new QStringList();
+    QString obj;
+    for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
+        obj=(QString::fromStdString((*it)->get_name()));
+        list->push_back(obj);
+    }
+    return list;
 }
 
 
