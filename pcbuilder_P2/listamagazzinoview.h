@@ -14,7 +14,11 @@ class ListaMagazzinoView :  public QWidget {
     Q_OBJECT
 
 private:
-QListWidget* magazzino_list;
+    QListView* magazzino_list;
+    QStringListModel* list_model;
+    QPushButton* aggiungi, *elimina;
+    QComboBox* filter_box;
+
 
 public:
      ListaMagazzinoView(QWidget* p=nullptr);
