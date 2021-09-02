@@ -72,6 +72,7 @@ public:
     Const_iteratore fine() const ;
     T get_last() const;  // solo per testing
     Nodo* remove_node(Nodo*);
+    void delete_node(Iteratore& );
 
 };
 
@@ -307,6 +308,32 @@ return x;
         //return x;
 
 
+}
+
+template<class T>
+void contenitore<T>::delete_node( Iteratore& it){
+    Nodo* provv=it.p;
+    if(!it.p->prec && !it.p->next){
+        it.p=nullptr;
+        first=nullptr;
+        last=nullptr;
+
+    }
+    else if(!it.p->prec){
+        it.p->next->prec=nullptr;
+        first=it.p->next;
+        it.p=it.p->next;
+    }
+    else if(!it.p->next){
+        it.p->prec->next=nullptr;
+        it.p=it.p->prec;
+
+    }
+    else{
+    it.p->prec->next=it.p->next;
+    it.p->next->prec=it.p->prec;
+    it.p=it.p->prec;}
+    delete provv;
 }
 
 

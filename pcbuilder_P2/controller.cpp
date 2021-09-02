@@ -1,13 +1,16 @@
 #include "controller.h"
 
 
-Controller::Controller(QStringList* list) : m(new Magazzino()), view( new Mainwindow()), lista_vista(new ListaMagazzinoView())
+Controller::Controller(QStringList* list) : m(new Magazzino()), view( new Mainwindow()), lista_vista(new ListaMagazzinoView()), item_view(new ViewSingleItem())
 {
     view->show();
     //prova();
 
     connect(view, SIGNAL(visualizzaComponentiPressed()), this, SLOT(loadMagazzinoView()));
     connect(lista_vista, SIGNAL(closing()), view, SLOT(show()));
+    connect(lista_vista, SIGNAL(delete_obj_to_controller(std::string)), this, SLOT(delete_obj_to_controller(std::string)));
+    connect(lista_vista, SIGNAL(item_to_view(std::string)), this, SLOT(item_to_view(std::string)));
+
 
 }
 
@@ -32,4 +35,14 @@ void Controller::loadMagazzinoView(){
     lista_vista->loadMagazzinoview(list); }
     view->hide();
     lista_vista->show();
+}
+
+void Controller::delete_obj_to_controller(std::string x){
+
+    m->delete_by_name(x);
+}
+
+void Controller::item_to_view(std::string x){
+    std::cout<<"ciao bello"<<std::endl;
+    item_view->show();
 }

@@ -15,7 +15,7 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QFile>
-#include <QFileInfo>
+//#include <QFileInfo>
 #include <QDebug>
 #include <QStringList>
 #include <QString>
@@ -28,8 +28,10 @@ private:
 public:
     //Magazzino(const Smartptr<Item>&);
     Magazzino();
+
     void add_compoenente (const Smartptr<Item>&);
     void filtroMarca(std::string);
+    void delete_by_name(std::string);
     void filtroCpu();
     contenitore<Item*>* get_filtro();
     contenitore<Smartptr<Item>>* get_lista();

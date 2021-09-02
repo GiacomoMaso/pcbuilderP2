@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <QWidget>
+//#include <QWidget>
 #include <QMenuBar>
 #include <QMenu>
 #include <QBoxLayout>
@@ -16,10 +16,12 @@ private:
     ListaMagazzinoView* prova;
     QPushButton* view_obj, * add_obj, * delete_obj;
     QListWidget* magazzino_list;
+    QLabel* header;
 
 
 public:
     Mainwindow(QWidget  *parent = nullptr);
+    ~Mainwindow() = default;
 
 
 

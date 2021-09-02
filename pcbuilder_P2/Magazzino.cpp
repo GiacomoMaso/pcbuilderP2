@@ -539,6 +539,24 @@ QStringList* Magazzino::get_lista_view(){
     return list;
 }
 
+void Magazzino::delete_by_name(std::string x){
+
+//    for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
+//        std::cout<<(*it)->get_name()<<std::endl;
+//    }
+
+
+
+    for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
+        if((*it)->get_name()==x){
+
+            lista_ogg->delete_node(it);}
+}
+
+//    for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
+//        std::cout<<(*it)->get_name()<<std::endl;
+//    }
+}
 
 
 

@@ -6,6 +6,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 #CONFIG += console c++11
 #CONFIG -= app_bundle
 #CONFIG -= qt
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050800
 
 
 
@@ -28,7 +29,8 @@ SOURCES += \
         schedamadre.cpp \
         sconto.cpp \
         scontrino.cpp \
-        smartptr.cpp
+        smartptr.cpp \
+        viewsingleitem.cpp
 
 HEADERS += \
     Magazzino.h \
@@ -48,4 +50,8 @@ HEADERS += \
     schedamadre.h \
     sconto.h \
     scontrino.h \
-    smartptr.h
+    smartptr.h \
+    viewsingleitem.h
+
+RESOURCES += \
+    style_folder.qrc
