@@ -6,6 +6,9 @@
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QMainWindow>
+#include <QFile>
+#include <QDebug>
+
 
 #include "listamagazzinoview.h"
 
@@ -22,6 +25,7 @@ private:
 public:
     Mainwindow(QWidget  *parent = nullptr);
     ~Mainwindow() = default;
+    void set_style();
 
 
 

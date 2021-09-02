@@ -69,7 +69,7 @@ SOURCES       = ../pcbuilder_P2/Magazzino.cpp \
 		../pcbuilder_P2/sconto.cpp \
 		../pcbuilder_P2/scontrino.cpp \
 		../pcbuilder_P2/smartptr.cpp \
-		../pcbuilder_P2/viewsingleitem.cpp qrc_style_folder.cpp \
+		../pcbuilder_P2/viewsingleitem.cpp qrc_Resource.cpp \
 		moc_controller.cpp \
 		moc_listamagazzinoview.cpp \
 		moc_mainwindow.cpp \
@@ -94,7 +94,7 @@ OBJECTS       = Magazzino.o \
 		scontrino.o \
 		smartptr.o \
 		viewsingleitem.o \
-		qrc_style_folder.o \
+		qrc_Resource.o \
 		moc_controller.o \
 		moc_listamagazzinoview.o \
 		moc_mainwindow.o \
@@ -473,7 +473,7 @@ Makefile: ../pcbuilder_P2/pcbuilder_P2.pro ../../../App/Qt/5.9.5/clang_64/mkspec
 		../../../App/Qt/5.9.5/clang_64/mkspecs/features/yacc.prf \
 		../../../App/Qt/5.9.5/clang_64/mkspecs/features/lex.prf \
 		../pcbuilder_P2/pcbuilder_P2.pro \
-		style_folder.qrc \
+		../pcbuilder_P2/Resource.qrc \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		../../../App/Qt/5.9.5/clang_64/lib/QtGui.framework/QtGui.prl \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/QtCore.prl
@@ -638,7 +638,7 @@ Makefile: ../pcbuilder_P2/pcbuilder_P2.pro ../../../App/Qt/5.9.5/clang_64/mkspec
 ../../../App/Qt/5.9.5/clang_64/mkspecs/features/yacc.prf:
 ../../../App/Qt/5.9.5/clang_64/mkspecs/features/lex.prf:
 ../pcbuilder_P2/pcbuilder_P2.pro:
-style_folder.qrc:
+../pcbuilder_P2/Resource.qrc:
 ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 ../../../App/Qt/5.9.5/clang_64/lib/QtGui.framework/QtGui.prl:
 ../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -671,7 +671,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents style_folder.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../pcbuilder_P2/Resource.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../App/Qt/5.9.5/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.h ../pcbuilder_P2/case.h ../pcbuilder_P2/componente.h ../pcbuilder_P2/contenitore.h ../pcbuilder_P2/controller.h ../pcbuilder_P2/cpu.h ../pcbuilder_P2/gpu.h ../pcbuilder_P2/item.h ../pcbuilder_P2/listamagazzinoview.h ../pcbuilder_P2/mainwindow.h ../pcbuilder_P2/memoria.h ../pcbuilder_P2/psu.h ../pcbuilder_P2/ram.h ../pcbuilder_P2/rom.h ../pcbuilder_P2/schedamadre.h ../pcbuilder_P2/sconto.h ../pcbuilder_P2/scontrino.h ../pcbuilder_P2/smartptr.h ../pcbuilder_P2/viewsingleitem.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.cpp ../pcbuilder_P2/case.cpp ../pcbuilder_P2/componente.cpp ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/gpu.cpp ../pcbuilder_P2/item.cpp ../pcbuilder_P2/listamagazzinoview.cpp ../pcbuilder_P2/main.cpp ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/psu.cpp ../pcbuilder_P2/ram.cpp ../pcbuilder_P2/rom.cpp ../pcbuilder_P2/schedamadre.cpp ../pcbuilder_P2/sconto.cpp ../pcbuilder_P2/scontrino.cpp ../pcbuilder_P2/smartptr.cpp ../pcbuilder_P2/viewsingleitem.cpp $(DISTDIR)/
@@ -698,12 +698,14 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_style_folder.cpp
+compiler_rcc_make_all: qrc_Resource.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_style_folder.cpp
-qrc_style_folder.cpp: style_folder.qrc \
-		../../../App/Qt/5.9.5/clang_64/bin/rcc
-	/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/bin/rcc -name style_folder style_folder.qrc -o qrc_style_folder.cpp
+	-$(DEL_FILE) qrc_Resource.cpp
+qrc_Resource.cpp: ../pcbuilder_P2/Resource.qrc \
+		../../../App/Qt/5.9.5/clang_64/bin/rcc \
+		../pcbuilder_P2/database.xml \
+		../pcbuilder_P2/style_folder/style.css
+	/Users/giacomomason/Documents/App/Qt/5.9.5/clang_64/bin/rcc -name Resource ../pcbuilder_P2/Resource.qrc -o qrc_Resource.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
@@ -725,6 +727,10 @@ moc_controller.cpp: ../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../pcbuilder_P2/listamagazzinoview.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
@@ -850,8 +856,6 @@ moc_controller.cpp: ../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		../pcbuilder_P2/Magazzino.h \
 		../pcbuilder_P2/contenitore.h \
@@ -869,8 +873,6 @@ moc_controller.cpp: ../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamReader \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QStringList \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QString \
@@ -1029,6 +1031,10 @@ moc_mainwindow.cpp: ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Heade
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../pcbuilder_P2/listamagazzinoview.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
@@ -1154,8 +1160,6 @@ moc_mainwindow.cpp: ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Heade
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		../pcbuilder_P2/mainwindow.h \
 		moc_predefs.h \
@@ -1235,6 +1239,10 @@ controller.o: ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/controller.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../pcbuilder_P2/listamagazzinoview.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
@@ -1360,8 +1368,6 @@ controller.o: ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/controller.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		../pcbuilder_P2/Magazzino.h \
 		../pcbuilder_P2/contenitore.h \
@@ -1379,8 +1385,6 @@ controller.o: ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/controller.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamReader \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QStringList \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QString \
@@ -1551,6 +1555,10 @@ main.o: ../pcbuilder_P2/main.cpp ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.fr
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../pcbuilder_P2/listamagazzinoview.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
@@ -1675,8 +1683,6 @@ main.o: ../pcbuilder_P2/main.cpp ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.fr
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		../pcbuilder_P2/Magazzino.h \
 		../pcbuilder_P2/contenitore.h \
@@ -1694,8 +1700,6 @@ main.o: ../pcbuilder_P2/main.cpp ../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.fr
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamReader \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QStringList \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QString \
@@ -1715,6 +1719,10 @@ mainwindow.o: ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../pcbuilder_P2/listamagazzinoview.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QtWidgets \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
@@ -1840,8 +1848,6 @@ mainwindow.o: ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/mainwindow.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidgetaction.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwizard.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../App/Qt/5.9.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QListWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../pcbuilder_P2/mainwindow.cpp
 
@@ -1890,8 +1896,8 @@ viewsingleitem.o: ../pcbuilder_P2/viewsingleitem.cpp ../pcbuilder_P2/viewsinglei
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o viewsingleitem.o ../pcbuilder_P2/viewsingleitem.cpp
 
-qrc_style_folder.o: qrc_style_folder.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_style_folder.o qrc_style_folder.cpp
+qrc_Resource.o: qrc_Resource.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resource.o qrc_Resource.cpp
 
 moc_controller.o: moc_controller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_controller.o moc_controller.cpp

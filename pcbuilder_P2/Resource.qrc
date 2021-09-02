@@ -1,0 +1,7 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>style_folder/style.css</file>
+    <file>database.xml</file>
+
+</qresource>
+</RCC>

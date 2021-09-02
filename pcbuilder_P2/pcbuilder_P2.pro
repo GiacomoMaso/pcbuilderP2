@@ -54,4 +54,4 @@ HEADERS += \
     viewsingleitem.h
 
 RESOURCES += \
-    style_folder.qrc
+    Resource.qrc
