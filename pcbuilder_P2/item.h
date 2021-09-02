@@ -6,7 +6,7 @@
 class Item{
   private:
     std::string name;
-    unsigned int quantità;
+    unsigned int quantita;
   public:
     Item( std::string , unsigned int =0 );
     virtual Item* clone () const = 0 ;

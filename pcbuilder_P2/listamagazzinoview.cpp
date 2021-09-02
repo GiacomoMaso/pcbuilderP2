@@ -22,6 +22,7 @@ ListaMagazzinoView::ListaMagazzinoView(QWidget* parent) : QWidget(parent), magaz
     layout->addWidget(magazzino_list);
     layout->addLayout(button_layout);
     setLayout(layout);
+    set_style();
 
 
     connect(elimina_button, SIGNAL(clicked()), this, SLOT(richiesta_elimina_obj()));
@@ -38,7 +39,12 @@ void ListaMagazzinoView::closeEvent(QCloseEvent *event)
 }
 
 void ListaMagazzinoView::loadMagazzinoview(QStringList* x) {
+    for ( const auto& i : *x  )
+    {
+        qDebug()<<i;
+    }
     for(auto it=x->begin(); it!=x->end(); it++){
+
         magazzino_list->addItem(*it);
     }
 //    list_model->setStringList(*x);
@@ -57,4 +63,17 @@ void ListaMagazzinoView::item_selected(QListWidgetItem* provv){
     provv=magazzino_list->currentItem();
     std::string obj_to_view=provv->text().toStdString();
     emit item_to_view(obj_to_view);
+}
+
+void ListaMagazzinoView::set_style () {
+    QFile styleFile(":/style_folder/style.css");
+       if(styleFile.open(QIODevice::ReadOnly))
+       {
+           QTextStream textStream(&styleFile);
+           QString styleSheet = textStream.readAll();
+           styleFile.close();
+           setStyleSheet(styleSheet);
+       }
+    qDebug()<<"CIAO"<<styleFile.open(QIODevice::ReadOnly);
+
 }

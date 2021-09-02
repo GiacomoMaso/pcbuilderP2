@@ -1,7 +1,7 @@
 #include "controller.h"
 
 
-Controller::Controller(QStringList* list) : m(new Magazzino()), view( new Mainwindow()), lista_vista(new ListaMagazzinoView()), item_view(new ViewSingleItem())
+Controller::Controller(QStringList* list) : m(new Magazzino()), view( new Mainwindow()), lista_vista(new ListaMagazzinoView()), item_view(new ViewSingleItem()), list(nullptr)
 {
     view->show();
     //prova();
@@ -30,7 +30,9 @@ void Controller::prova() {
 //}
 
 void Controller::loadMagazzinoView(){
+    std::cout<<"prova ubuntu"<<std::endl;
     if(!list){
+        std::cout<<"ciao bello"<<std::endl;
     list=m->get_lista_view();
     lista_vista->loadMagazzinoview(list); }
     view->hide();

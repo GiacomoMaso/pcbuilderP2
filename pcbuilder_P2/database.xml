@@ -2,7 +2,7 @@
   <Magazzino>
 <Gpu>
   <nome>Radeon x1</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>ati</marca>
   <modello>5700xt</modello>
   <price>500</price>
@@ -15,7 +15,7 @@
 </Gpu>
 <Gpu>
   <nome>nvdia 1060</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>nvidia</marca>
   <modello>1060</modello>
   <price>500</price>
@@ -27,7 +27,7 @@
 </Gpu>
 <Gpu>
   <nome>nvdia 1080</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>nvidia</marca>
   <modello>1080</modello>
   <price>500</price>
@@ -40,7 +40,7 @@
 
 <Cpu>
   <nome>intel</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>intel</marca>
   <modello>7700k</modello>
   <price>400</price>
@@ -54,19 +54,19 @@
 
 <Psu>
   <nome>alimenta</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>corsair</marca>
   <modello>deluxe</modello>
   <price>120</price>
   <realese_date>2019</realese_date>
   <watt>500</watt>
   <rating>90</rating>
-  <modularità>Si</modularità>
+  <modularita>Si</modularita>
 </Psu>
 
 <SchedaMadre>
   <nome>Msi z90</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>Msi</marca>
   <modello>z90</modello>
   <price>220</price>
@@ -79,7 +79,7 @@
 
 <Case>
   <nome>case noctua</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>Noctua</marca>
   <modello>31</modello>
   <price>30</price>
@@ -90,7 +90,7 @@
 
 <Ram>
   <nome>Corsair vengeance</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>Corsair</marca>
   <modello>vengeance</modello>
   <price>120</price>
@@ -104,7 +104,7 @@
 
 <Rom>
   <nome>samsugng evo</nome>
-  <quantità>2</quantità>
+  <quantita>2</quantita>
   <marca>Samsung</marca>
   <modello>812</modello>
   <price>150</price>

@@ -180,7 +180,7 @@ typename contenitore<T>::Iteratore& contenitore<T>::Iteratore::operator++(){
         return *this;
     }
 //    else{
-//        return Iteratore(nullptr);
+        return *this;
 //    }
 }
 
@@ -200,6 +200,7 @@ typename contenitore<T>::Iteratore& contenitore<T>::Iteratore::operator--(){
         p=p->prec;
         return *this;
     }
+    return *this;
 }
 
 template<class T>
@@ -229,16 +230,18 @@ typename contenitore<T>::Const_iteratore& contenitore<T>::Const_iteratore::opera
         p=p->next;
         return *this;
     }
+    return *this;
 }
 
 template<class T>
 typename contenitore<T>::Const_iteratore contenitore<T>::Const_iteratore::operator++(int){
-    Const_iteratore aux;
+    Const_iteratore aux(nullptr);
     if(p) {
         aux=*this;
         p=p->next;
         return aux;
     }
+    return aux;
 }
 
 template<class T>
@@ -247,16 +250,18 @@ typename contenitore<T>::Const_iteratore& contenitore<T>::Const_iteratore::opera
         p=p->prec;
         return *this;
     }
+    return nullptr;
 }
 
 template<class T>
 typename contenitore<T>::Const_iteratore contenitore<T>::Const_iteratore::operator--(int){
-    Iteratore aux;
+    Iteratore aux(nullptr);
     if(p) {
         aux=*this;
         p=p->prec;
         return aux;
     }
+    return *this;
 }
 
 template<class T>

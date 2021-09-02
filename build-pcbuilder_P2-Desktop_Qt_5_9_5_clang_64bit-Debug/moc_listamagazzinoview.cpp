@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../pcbuilder_P2/listamagazzinoview.h"
+#include "../../../../Desktop/pcbuilder_P2/listamagazzinoview.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

@@ -21,3 +21,8 @@ QLabel{
 background-color: #525252;
 color:white;
 }
+
+QListWidget{
+    background-color: yellow;
+    border-radius: 20px;
+}

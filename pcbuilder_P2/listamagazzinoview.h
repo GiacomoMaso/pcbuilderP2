@@ -25,6 +25,7 @@ public:
      ListaMagazzinoView(QWidget* p=nullptr);
      void loadMagazzinoview(QStringList* x);
      ~ListaMagazzinoView() =default;
+     void set_style();
 public slots:
      void richiesta_elimina_obj();
      void item_selected(QListWidgetItem*);

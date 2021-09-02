@@ -7,7 +7,7 @@ class Psu : public Componente {
 private:
     unsigned int watt;
     unsigned int rating;
-    std::string modularità;
+    std::string modularita;
 public:
     Psu(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0,unsigned int =0, unsigned int =0, unsigned int =0, std::string ="");
     unsigned int get_watt() const;

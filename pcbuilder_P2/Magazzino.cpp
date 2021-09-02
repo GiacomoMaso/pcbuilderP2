@@ -127,8 +127,8 @@ contenitore<Smartptr<Item>>* Magazzino::get_lista() {
 }
 
 void Magazzino::load_database() {          //da fare delete sui puntatori
-    QFile file("/Users/giacomomason/Documents/GitHub/pcbuilderP2/pcbuilder_P2/database.xml");
-
+//    QFile file("/Users/giacomomason/Documents/GitHub/pcbuilderP2/pcbuilder_P2/database.xml");
+      QFile file(":/database.xml");
 
     file.open(QIODevice::ReadOnly);
     QXmlStreamReader reader(&file);
@@ -140,7 +140,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                       if(reader.name() == "Gpu"){
                         std::string nome;
-                        unsigned int quantità;
+                        unsigned int quantita;
                         std::string marca;
                         std::string modello;
                         unsigned int price;
@@ -154,8 +154,8 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                             if(reader.name() == "nome"){
                                  nome=reader.readElementText().toStdString();
                             }
-                            else if(reader.name() == "quantità"){
-                                 quantità=reader.readElementText().toInt();
+                            else if(reader.name() == "quantita"){
+                                 quantita=reader.readElementText().toInt();
                             }
                             else if(reader.name() == "marca"){
                                  marca=reader.readElementText().toStdString();
@@ -184,14 +184,14 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
 
                        }
-                       Gpu* provv=new Gpu(nome,quantità,marca,modello,price,realese_date,variante,vram,gpu_clock,type_ram);
+                       Gpu* provv=new Gpu(nome,quantita,marca,modello,price,realese_date,variante,vram,gpu_clock,type_ram);
                        Smartptr<Item> obj(provv);
                        if(lista_ogg) add_compoenente(obj);
                        else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
                     }
                      else if(reader.name() == "Cpu"){
                           std::string nome;
-                          unsigned int quantità;
+                          unsigned int quantita;
                           std::string marca;
                           std::string modello;
                           unsigned int price;
@@ -206,8 +206,8 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                               if(reader.name() == "nome"){
                                    nome=reader.readElementText().toStdString();
                               }
-                              else if(reader.name() == "quantità"){
-                                   quantità=reader.readElementText().toInt();
+                              else if(reader.name() == "quantita"){
+                                   quantita=reader.readElementText().toInt();
                               }
                               else if(reader.name() == "marca"){
                                    marca=reader.readElementText().toStdString();
@@ -239,7 +239,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                          }
 
-                         Cpu* provv=new Cpu(nome,quantità,marca,modello,price,realese_date,serie,ghz,core_number,intel_AMD,socket);
+                         Cpu* provv=new Cpu(nome,quantita,marca,modello,price,realese_date,serie,ghz,core_number,intel_AMD,socket);
                          Smartptr<Item> obj(provv);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -247,22 +247,22 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                      else if(reader.name() == "Psu"){
                           std::string nome;
-                          unsigned int quantità;
+                          unsigned int quantita;
                           std::string marca;
                           std::string modello;
                           unsigned int price;
                           unsigned int realese_date;
                           unsigned int watt;
                           unsigned int rating;
-                          std::string modularità;
+                          std::string modularita;
 
                          while(reader.readNextStartElement()){
 
                               if(reader.name() == "nome"){
                                    nome=reader.readElementText().toStdString();
                               }
-                              else if(reader.name() == "quantità"){
-                                   quantità=reader.readElementText().toInt();
+                              else if(reader.name() == "quantita"){
+                                   quantita=reader.readElementText().toInt();
                               }
                               else if(reader.name() == "marca"){
                                    marca=reader.readElementText().toStdString();
@@ -282,14 +282,14 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                               else if(reader.name() == "rating"){
                                    rating=reader.readElementText().toInt();
                               }
-                              else if(reader.name() == "modularità"){
-                                   modularità=reader.readElementText().toStdString();
+                              else if(reader.name() == "modularita"){
+                                   modularita=reader.readElementText().toStdString();
                               }
 
 
                          }
 
-                         Psu* provv=new Psu(nome,quantità,marca,modello,price,realese_date,watt,rating,modularità);
+                         Psu* provv=new Psu(nome,quantita,marca,modello,price,realese_date,watt,rating,modularita);
                          Smartptr<Item> obj(provv);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -299,7 +299,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                      else if(reader.name() == "SchedaMadre"){
                           std::string nome;
-                          unsigned int quantità;
+                          unsigned int quantita;
                           std::string marca;
                           std::string modello;
                           unsigned int price;
@@ -315,8 +315,8 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                               if(reader.name() == "nome"){
                                    nome=reader.readElementText().toStdString();
                               }
-                              else if(reader.name() == "quantità"){
-                                   quantità=reader.readElementText().toInt();
+                              else if(reader.name() == "quantita"){
+                                   quantita=reader.readElementText().toInt();
                               }
                               else if(reader.name() == "marca"){
                                    marca=reader.readElementText().toStdString();
@@ -346,7 +346,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                          }
 
-                         SchedaMadre* provv=new SchedaMadre(nome,quantità,marca,modello,price,realese_date,grandezza,socket_mb, sata_port, nvme_port);
+                         SchedaMadre* provv=new SchedaMadre(nome,quantita,marca,modello,price,realese_date,grandezza,socket_mb, sata_port, nvme_port);
                          Smartptr<Item> obj(provv);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -354,7 +354,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                      else if(reader.name() == "Case"){
                           std::string nome;
-                          unsigned int quantità;
+                          unsigned int quantita;
                           std::string marca;
                           std::string modello;
                           unsigned int price;
@@ -368,8 +368,8 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                               if(reader.name() == "nome"){
                                    nome=reader.readElementText().toStdString();
                               }
-                              else if(reader.name() == "quantità"){
-                                   quantità=reader.readElementText().toInt();
+                              else if(reader.name() == "quantita"){
+                                   quantita=reader.readElementText().toInt();
                               }
                               else if(reader.name() == "marca"){
                                    marca=reader.readElementText().toStdString();
@@ -393,7 +393,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                          }
 
-                         Case* provv=new Case(nome,quantità,marca,modello,price,realese_date,case_dim,mb_supported);
+                         Case* provv=new Case(nome,quantita,marca,modello,price,realese_date,case_dim,mb_supported);
                          Smartptr<Item> obj(provv);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -401,7 +401,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                       else if(reader.name() == "Ram"){
                            std::string nome;
-                           unsigned int quantità;
+                           unsigned int quantita;
                            std::string marca;
                            std::string modello;
                            unsigned int price;
@@ -418,8 +418,8 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                                if(reader.name() == "nome"){
                                     nome=reader.readElementText().toStdString();
                                }
-                               else if(reader.name() == "quantità"){
-                                    quantità=reader.readElementText().toInt();
+                               else if(reader.name() == "quantita"){
+                                    quantita=reader.readElementText().toInt();
                                }
                                else if(reader.name() == "marca"){
                                     marca=reader.readElementText().toStdString();
@@ -452,7 +452,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                           }
 
-                          Ram* provv=new Ram(nome,quantità,marca,modello,price,realese_date,type_memory,capacity,clock,latency,num_per_pacco);
+                          Ram* provv=new Ram(nome,quantita,marca,modello,price,realese_date,type_memory,capacity,clock,latency,num_per_pacco);
                           Smartptr<Item> obj(provv);
                           if(lista_ogg) add_compoenente(obj);
                           else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -460,7 +460,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                       else if(reader.name() == "Rom"){
                            std::string nome;
-                           unsigned int quantità;
+                           unsigned int quantita;
                            std::string marca;
                            std::string modello;
                            unsigned int price;
@@ -477,8 +477,8 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                                if(reader.name() == "nome"){
                                     nome=reader.readElementText().toStdString();
                                }
-                               else if(reader.name() == "quantità"){
-                                    quantità=reader.readElementText().toInt();
+                               else if(reader.name() == "quantita"){
+                                    quantita=reader.readElementText().toInt();
                                }
                                else if(reader.name() == "marca"){
                                     marca=reader.readElementText().toStdString();
@@ -513,7 +513,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
 
                           }
 
-                          Rom* provv=new Rom(nome,quantità,marca,modello,price,realese_date,type_memory,capacity,mb_write,mb_read, size);
+                          Rom* provv=new Rom(nome,quantita,marca,modello,price,realese_date,type_memory,capacity,mb_write,mb_read, size);
                           Smartptr<Item> obj(provv);
                           if(lista_ogg) add_compoenente(obj);
                           else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
