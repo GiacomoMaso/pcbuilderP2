@@ -14,3 +14,7 @@ unsigned int Ram::get_latency() const{
 Ram* Ram::clone() const{
     return new Ram(*this);
 }
+
+unsigned int Ram::get_num_per_pacco() const{
+    return num_per_pacco;
+}

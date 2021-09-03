@@ -17,6 +17,7 @@ public:
     unsigned int get_core_number () const;
     std::string get_intel_AMD () const;
     std::string get_socket () const;
+    std::string get_serie() const;
 };
 
 #endif // CPU_H

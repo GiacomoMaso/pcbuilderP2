@@ -16,8 +16,10 @@ public:
     double get_price() const;
     bool operator==(const Componente&) const;
     std::string get_marca() const;
+    std::string get_modello() const;
     virtual unsigned int product_score () const;
     friend std::ostream& operator<<( std::ostream&, const Componente& );
+    unsigned int get_realese_date() const;
 
 
     //virtual double price_modify () const;

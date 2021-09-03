@@ -19,3 +19,7 @@ Gpu* Gpu::clone() const{
     return new Gpu(*this);
 }
 
+std::string Gpu::get_variante() const{
+    return variante;
+}
+

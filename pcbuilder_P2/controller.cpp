@@ -46,5 +46,7 @@ void Controller::delete_obj_to_controller(std::string x){
 
 void Controller::item_to_view(std::string x){
     std::cout<<"ciao bello"<<std::endl;
+    QStringList* provv=m->get_item_to_view(x);
+
     item_view->show();
 }

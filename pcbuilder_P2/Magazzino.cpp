@@ -558,12 +558,172 @@ void Magazzino::delete_by_name(std::string x){
 //    }
 }
 
+QStringList* Magazzino::get_item_to_view(std::string x) const{
+    QStringList* list_field=new QStringList();
+    QString field;
+    for(contenitore<Smartptr<Item>>::Const_iteratore it=lista_ogg->inizio(); it!=lista_ogg->fine(); it++){
+        if((*it)->get_name()==x){
+            Item* p=*it;
+            field=QString::fromStdString(p->get_name());
+            list_field->push_back(field);
+            field=QString::number(p->get_quantita());
+            list_field->push_back(field);
+            if(dynamic_cast<Gpu*>(p)){
+                Gpu* p_gpu=dynamic_cast<Gpu*>(p);
+                field=QString::fromStdString(p_gpu->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_gpu->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_gpu->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_gpu->get_realese_date());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_gpu->get_variante());
+                list_field->push_back(field);
+                field=QString::number(p_gpu->get_vram());
+                list_field->push_back(field);
+                field=QString::number(p_gpu->get_gpu_clock());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_gpu->get_type_ram());
+                list_field->push_back(field);
+
+            }
+            else if(dynamic_cast<Cpu*>(p)){
+                Cpu* p_cpu=dynamic_cast<Cpu*>(p);
+                field=QString::fromStdString(p_cpu->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_cpu->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_cpu->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_cpu->get_realese_date());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_cpu->get_serie());
+                list_field->push_back(field);
+                field=QString::number(p_cpu->get_ghz());
+                list_field->push_back(field);
+                field=QString::number(p_cpu->get_core_number());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_cpu->get_intel_AMD());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_cpu->get_socket());
+                list_field->push_back(field);
+
+
+            }
+            else if(dynamic_cast<Psu*>(p)){
+                Psu* p_psu=dynamic_cast<Psu*>(p);
+                field=QString::fromStdString(p_psu->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_psu->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_psu->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_psu->get_realese_date());
+                list_field->push_back(field);
+                field=QString::number(p_psu->get_watt());
+                list_field->push_back(field);
+                field=QString::number(p_psu->get_rating());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_psu->get_mod());
+                list_field->push_back(field);
 
 
 
+            }
 
+            else if(dynamic_cast<SchedaMadre*>(p)){
+                SchedaMadre* p_mb=dynamic_cast<SchedaMadre*>(p);
+                field=QString::fromStdString(p_mb->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_mb->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_mb->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_mb->get_realese_date());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_mb->get_grandezza());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_mb->get_socket_mb());
+                list_field->push_back(field);
+                field=QString::number(p_mb->get_sata_port());
+                list_field->push_back(field);
+                field=QString::number(p_mb->get_nvme_port());
+                list_field->push_back(field);
 
+            }
 
+            else if(dynamic_cast<Case*>(p)){
+                Case* p_case=dynamic_cast<Case*>(p);
+                field=QString::fromStdString(p_case->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_case->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_case->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_case->get_realese_date());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_case->get_case_dim());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_case->get_mb_supported());
+                list_field->push_back(field);
+
+            }
+
+            else if(dynamic_cast<Ram*>(p)){
+                Ram* p_ram=dynamic_cast<Ram*>(p);
+                field=QString::fromStdString(p_ram->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_ram->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_ram->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_ram->get_realese_date());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_ram->get_type_memory());
+                list_field->push_back(field);
+                field=QString::number(p_ram->get_capacity());
+                list_field->push_back(field);
+                field=QString::number(p_ram->get_clock());
+                list_field->push_back(field);
+                field=QString::number(p_ram->get_latency());
+                list_field->push_back(field);
+                field=QString::number(p_ram->get_num_per_pacco());
+                list_field->push_back(field);
+            }
+
+            else if(dynamic_cast<Rom*>(p)){
+                Rom* p_rom=dynamic_cast<Rom*>(p);
+                field=QString::fromStdString(p_rom->get_marca());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_rom->get_modello());
+                list_field->push_back(field);
+                field=QString::number(p_rom->get_price());
+                list_field->push_back(field);
+                field=QString::number(p_rom->get_realese_date());
+                list_field->push_back(field);
+                field=QString::fromStdString(p_rom->get_type_memory());
+                list_field->push_back(field);
+                field=QString::number(p_rom->get_capacity());
+                list_field->push_back(field);
+                field=QString::number(p_rom->get_mb_write());
+                list_field->push_back(field);
+                field=QString::number(p_rom->get_mb_read());
+                list_field->push_back(field);
+                field=QString::number(p_rom->get_size());
+                list_field->push_back(field);
+
+            }
+
+        }
+    }
+
+    for ( const auto& i : *list_field  )
+    {
+        qDebug()<<i;
+    }
+    return list_field;
+}
 
 
 

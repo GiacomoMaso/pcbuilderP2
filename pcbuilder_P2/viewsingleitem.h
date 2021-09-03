@@ -1,6 +1,7 @@
 #ifndef VIEWSINGLEITEM_H
 #define VIEWSINGLEITEM_H
 #include <QWidget>
+#include <QtWidgets>
 
 
 class ViewSingleItem : public QWidget
@@ -10,7 +11,7 @@ class ViewSingleItem : public QWidget
 private:
 
 public:
-    ViewSingleItem();
+    ViewSingleItem(QWidget* parent=nullptr);
 };
 
 #endif // VIEWSINGLEITEM_H

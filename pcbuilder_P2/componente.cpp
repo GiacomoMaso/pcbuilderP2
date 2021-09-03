@@ -61,6 +61,14 @@ unsigned int Componente::product_score() const{
     return score;
 }
 
+std::string Componente::get_modello() const {
+    return modello;
+}
+
+unsigned int Componente::get_realese_date() const{
+    return realese_date;
+}
+
 
 
 /*

@@ -7,6 +7,10 @@ std::string Item::get_name() const{
     return name;
 };
 
+unsigned int Item::get_quantita() const{
+    return quantita;
+}
+
 
 
 

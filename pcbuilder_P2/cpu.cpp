@@ -22,3 +22,7 @@ std::string Cpu::get_socket() const {
 Cpu* Cpu::clone () const {
     return new Cpu(*this);
 }
+
+std::string Cpu::get_serie() const{
+    return serie;
+}

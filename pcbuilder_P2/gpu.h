@@ -14,6 +14,7 @@ public:
     unsigned int get_vram() const;
     unsigned int get_gpu_clock() const;
     std::string get_type_ram() const;
+    std::string get_variante() const;
 };
 
 #endif // GPU_H

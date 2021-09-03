@@ -4,7 +4,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QMainWindow(parent), header(new QLabel
 {
     setWindowTitle("Pc Builder");
     setMinimumSize(800, 600);
-
+    move(QApplication::desktop()->screen()->rect().center() - rect().center());
 
 
     header->setFrameStyle(QFrame::Panel | QFrame::Sunken);

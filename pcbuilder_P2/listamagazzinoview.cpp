@@ -4,6 +4,7 @@ ListaMagazzinoView::ListaMagazzinoView(QWidget* parent) : QWidget(parent), magaz
 {
     setWindowTitle("Prodotti presenti nel magazzino");
     setMinimumSize(800, 600);
+    move(QApplication::desktop()->screen()->rect().center() - rect().center());
     aggiungi_button->setMinimumSize(200,50);
     elimina_button->setMinimumSize(200,50);
     filter_box->setMinimumSize(200,50);

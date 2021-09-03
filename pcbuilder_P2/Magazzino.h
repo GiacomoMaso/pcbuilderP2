@@ -36,6 +36,7 @@ public:
     contenitore<Item*>* get_filtro();
     contenitore<Smartptr<Item>>* get_lista();
     QStringList* get_lista_view();
+    QStringList* get_item_to_view(std::string) const;
     void filtroGpu();
     void filtroCase();
     void filtroSchedaMadre();

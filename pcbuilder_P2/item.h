@@ -11,6 +11,7 @@ class Item{
     Item( std::string , unsigned int =0 );
     virtual Item* clone () const = 0 ;
     std::string get_name() const;
+    unsigned int get_quantita() const;
     virtual unsigned int product_score () const = 0;
     virtual ~Item() {};
 
