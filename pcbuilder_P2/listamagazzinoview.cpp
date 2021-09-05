@@ -8,6 +8,7 @@ ListaMagazzinoView::ListaMagazzinoView(QWidget* parent) : QWidget(parent), magaz
     aggiungi_button->setMinimumSize(200,50);
     elimina_button->setMinimumSize(200,50);
     filter_box->setMinimumSize(200,50);
+
 // filter_box->lineEdit()->setPlaceholderText("filtro");
     QStringList List=(QStringList() <<"Tutti gli elementi"<< "Cpu" << "Gpu" << "Ram"<<"Rom"<<"Psu"<<"Scheda Madre");
 

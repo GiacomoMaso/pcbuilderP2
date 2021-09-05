@@ -30,6 +30,62 @@ QListWidget{
 }
 
 QListWidgetItem{
-    color: white;
+ color: white;
 
+}
+
+QListWidget::item{
+padding:15px;
+}
+
+QListWidget::item:selected{
+background-color: #5998f0;
+}
+
+QComboBox {
+
+    border-radius: 10px;
+    background-color:white;
+
+}
+
+
+QComboBox::item{
+    background-color: white;
+
+}
+
+QComboBox::item:selected{
+    background-color: #5998f0;
+    color:black;
+}
+
+QComboBox::drop-down {
+border-radius: 10px;
+}
+
+QComboBox::down-arrow {
+background-color:black;
+}
+
+QLabel {
+    font-size: 18px;
+}
+
+QLabel[objectName^="item_view_label"]{
+    border-radius: 10px;
+    padding-left: 15px;
+
+}
+
+QLabel[objectName^="select_item_label"]{
+    background-color: #212124;
+    font-size: 20px;
+
+}
+
+QLineEdit {
+    color:grey;
+    background-color: white;
+    border-radius: 10px;
 }

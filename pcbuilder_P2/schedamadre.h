@@ -15,6 +15,7 @@ public:
     std::string get_socket_mb() const;
     unsigned int get_sata_port() const;
     unsigned int get_nvme_port() const;
+    virtual SchedaMadre* clone() const;
 
 };
 

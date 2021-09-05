@@ -350,6 +350,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                          Smartptr<Item> obj(provv);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
                       }
 
                      else if(reader.name() == "Case"){
@@ -505,7 +506,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                                     mb_read=reader.readElementText().toDouble(); // idem
                                }
 
-                               else if(reader.name() == "double"){
+                               else if(reader.name() == "size"){
                                     size=reader.readElementText().toDouble(); // idem
                                }
 
@@ -564,68 +565,68 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
     for(contenitore<Smartptr<Item>>::Const_iteratore it=lista_ogg->inizio(); it!=lista_ogg->fine(); it++){
         if((*it)->get_name()==x){
             Item* p=*it;
-            field=QString::fromStdString(p->get_name());
+            field="Nome: "+QString::fromStdString(p->get_name());
             list_field->push_back(field);
-            field=QString::number(p->get_quantita());
+            field="Quantità: "+QString::number(p->get_quantita());
             list_field->push_back(field);
             if(dynamic_cast<Gpu*>(p)){
                 Gpu* p_gpu=dynamic_cast<Gpu*>(p);
-                field=QString::fromStdString(p_gpu->get_marca());
+                field="Marca: "+QString::fromStdString(p_gpu->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_gpu->get_modello());
+                field="Modello: "+QString::fromStdString(p_gpu->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_gpu->get_price());
+                field="Prezzo: "+QString::number(p_gpu->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_gpu->get_realese_date());
+                field="Data di Rilascio: "+QString::number(p_gpu->get_realese_date());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_gpu->get_variante());
+                field="Variante: "+QString::fromStdString(p_gpu->get_variante());
                 list_field->push_back(field);
-                field=QString::number(p_gpu->get_vram());
+                field="Vram: "+QString::number(p_gpu->get_vram());
                 list_field->push_back(field);
-                field=QString::number(p_gpu->get_gpu_clock());
+                field="Clock: "+QString::number(p_gpu->get_gpu_clock());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_gpu->get_type_ram());
+                field="Tipologia ram:"+QString::fromStdString(p_gpu->get_type_ram());
                 list_field->push_back(field);
 
             }
             else if(dynamic_cast<Cpu*>(p)){
                 Cpu* p_cpu=dynamic_cast<Cpu*>(p);
-                field=QString::fromStdString(p_cpu->get_marca());
+                field="Marca: "+QString::fromStdString(p_cpu->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_cpu->get_modello());
+                field="Modello: "+QString::fromStdString(p_cpu->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_cpu->get_price());
+                field="Prezzo: "+QString::number(p_cpu->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_cpu->get_realese_date());
+                field="Data di rilascio: "+QString::number(p_cpu->get_realese_date());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_cpu->get_serie());
+                field="Serie: "+QString::fromStdString(p_cpu->get_serie());
                 list_field->push_back(field);
-                field=QString::number(p_cpu->get_ghz());
+                field="Cpu ghz: "+QString::number(p_cpu->get_ghz());
                 list_field->push_back(field);
-                field=QString::number(p_cpu->get_core_number());
+                field="Numero di core: "+QString::number(p_cpu->get_core_number());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_cpu->get_intel_AMD());
+                field="Intel/AMD: "+QString::fromStdString(p_cpu->get_intel_AMD());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_cpu->get_socket());
+                field="Socket in cui va inserito: "+QString::fromStdString(p_cpu->get_socket());
                 list_field->push_back(field);
 
 
             }
             else if(dynamic_cast<Psu*>(p)){
                 Psu* p_psu=dynamic_cast<Psu*>(p);
-                field=QString::fromStdString(p_psu->get_marca());
+                field="Marca: "+QString::fromStdString(p_psu->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_psu->get_modello());
+                field="Modello: "+QString::fromStdString(p_psu->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_psu->get_price());
+                field="Prezzo: "+QString::number(p_psu->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_psu->get_realese_date());
+                field="Data di rilascio: "+QString::number(p_psu->get_realese_date());
                 list_field->push_back(field);
-                field=QString::number(p_psu->get_watt());
+                field="Watt: "+QString::number(p_psu->get_watt());
                 list_field->push_back(field);
-                field=QString::number(p_psu->get_rating());
+                field="Rating: "+QString::number(p_psu->get_rating());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_psu->get_mod());
+                field="Modularità: "+QString::fromStdString(p_psu->get_mod());
                 list_field->push_back(field);
 
 
@@ -634,83 +635,90 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
 
             else if(dynamic_cast<SchedaMadre*>(p)){
                 SchedaMadre* p_mb=dynamic_cast<SchedaMadre*>(p);
-                field=QString::fromStdString(p_mb->get_marca());
+                field="Marca: "+QString::fromStdString(p_mb->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_mb->get_modello());
+                field="Modello: "+QString::fromStdString(p_mb->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_mb->get_price());
+                std::cout<<field.toStdString()<<std::endl;
+                field="Prezzo: "+QString::number(p_mb->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_mb->get_realese_date());
+                std::cout<<field.toStdString()<<std::endl;
+                field="Data di rilascio: "+QString::number(p_mb->get_realese_date());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_mb->get_grandezza());
+                std::cout<<field.toStdString()<<std::endl;
+                field="Formato: "+QString::fromStdString(p_mb->get_grandezza());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_mb->get_socket_mb());
+                std::cout<<field.toStdString()<<std::endl;
+                field="Socket: "+QString::fromStdString(p_mb->get_socket_mb());
                 list_field->push_back(field);
-                field=QString::number(p_mb->get_sata_port());
+                std::cout<<field.toStdString()<<std::endl;
+                field="Numero porte Sata: "+QString::number(p_mb->get_sata_port());
                 list_field->push_back(field);
-                field=QString::number(p_mb->get_nvme_port());
+                std::cout<<field.toStdString()<<std::endl;
+                field="Numero slot NVME: "+QString::number(p_mb->get_nvme_port());
                 list_field->push_back(field);
+                std::cout<<field.toStdString()<<std::endl;
 
             }
 
             else if(dynamic_cast<Case*>(p)){
                 Case* p_case=dynamic_cast<Case*>(p);
-                field=QString::fromStdString(p_case->get_marca());
+                field="Marca: "+QString::fromStdString(p_case->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_case->get_modello());
+                field="Modello: "+QString::fromStdString(p_case->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_case->get_price());
+                field="Prezzo: "+QString::number(p_case->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_case->get_realese_date());
+                field="Data di rilascio: "+QString::number(p_case->get_realese_date());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_case->get_case_dim());
+                field="Dimensione case: "+QString::fromStdString(p_case->get_case_dim());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_case->get_mb_supported());
+                field="Formato scheda madre supportata: "+QString::fromStdString(p_case->get_mb_supported());
                 list_field->push_back(field);
 
             }
 
             else if(dynamic_cast<Ram*>(p)){
                 Ram* p_ram=dynamic_cast<Ram*>(p);
-                field=QString::fromStdString(p_ram->get_marca());
+                field="Marca: "+QString::fromStdString(p_ram->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_ram->get_modello());
+                field="Modello: "+QString::fromStdString(p_ram->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_ram->get_price());
+                field="Prezzo: "+QString::number(p_ram->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_ram->get_realese_date());
+                field="Data di rilascio: "+QString::number(p_ram->get_realese_date());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_ram->get_type_memory());
+                field="Tipo memoria: "+QString::fromStdString(p_ram->get_type_memory());
                 list_field->push_back(field);
-                field=QString::number(p_ram->get_capacity());
+                field="Capacità: "+QString::number(p_ram->get_capacity());
                 list_field->push_back(field);
-                field=QString::number(p_ram->get_clock());
+                field="Clock: "+QString::number(p_ram->get_clock());
                 list_field->push_back(field);
-                field=QString::number(p_ram->get_latency());
+                field="Latenza: "+QString::number(p_ram->get_latency());
                 list_field->push_back(field);
-                field=QString::number(p_ram->get_num_per_pacco());
+                field="Numero per pacco: "+QString::number(p_ram->get_num_per_pacco());
                 list_field->push_back(field);
             }
 
             else if(dynamic_cast<Rom*>(p)){
                 Rom* p_rom=dynamic_cast<Rom*>(p);
-                field=QString::fromStdString(p_rom->get_marca());
+                field="Marca: "+QString::fromStdString(p_rom->get_marca());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_rom->get_modello());
+                field="Modello: "+QString::fromStdString(p_rom->get_modello());
                 list_field->push_back(field);
-                field=QString::number(p_rom->get_price());
+                field="Prezzo: "+QString::number(p_rom->get_price());
                 list_field->push_back(field);
-                field=QString::number(p_rom->get_realese_date());
+                field="Data di rilascio: "+QString::number(p_rom->get_realese_date());
                 list_field->push_back(field);
-                field=QString::fromStdString(p_rom->get_type_memory());
+                field="Tipo di memoria: "+QString::fromStdString(p_rom->get_type_memory());
                 list_field->push_back(field);
-                field=QString::number(p_rom->get_capacity());
+                field="Capacità: "+QString::number(p_rom->get_capacity());
                 list_field->push_back(field);
-                field=QString::number(p_rom->get_mb_write());
+                field="Velocità scrittura: "+QString::number(p_rom->get_mb_write());
                 list_field->push_back(field);
-                field=QString::number(p_rom->get_mb_read());
+                field="velocità in lettura: "+QString::number(p_rom->get_mb_read());
                 list_field->push_back(field);
-                field=QString::number(p_rom->get_size());
+                field="Size: "+QString::number(p_rom->get_size());
                 list_field->push_back(field);
 
             }

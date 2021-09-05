@@ -1,7 +1,7 @@
 #ifndef MAGAZZINO_H
 #define MAGAZZINO_H
 #include "contenitore.h"
-#include "item.h"
+//#include "item.h"
 #include "smartptr.h"
 #include "cpu.h"
 #include "gpu.h"

@@ -19,3 +19,7 @@ unsigned int SchedaMadre::get_sata_port() const{
 unsigned int SchedaMadre::get_nvme_port() const{
     return nvme_port;
 }
+
+SchedaMadre* SchedaMadre::clone() const{
+    return new SchedaMadre(*this);
+}

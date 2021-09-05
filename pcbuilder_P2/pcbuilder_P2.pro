@@ -17,6 +17,7 @@ SOURCES += \
         contenitore.cpp \
         controller.cpp \
         cpu.cpp \
+        formview.cpp \
         gpu.cpp \
         item.cpp \
         listamagazzinoview.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
         schedamadre.cpp \
         sconto.cpp \
         scontrino.cpp \
+        selectaddobjectview.cpp \
         smartptr.cpp \
         viewsingleitem.cpp
 
@@ -39,6 +41,7 @@ HEADERS += \
     contenitore.h \
     controller.h \
     cpu.h \
+    formview.h \
     gpu.h \
     item.h \
     listamagazzinoview.h \
@@ -50,6 +53,7 @@ HEADERS += \
     schedamadre.h \
     sconto.h \
     scontrino.h \
+    selectaddobjectview.h \
     smartptr.h \
     viewsingleitem.h
 

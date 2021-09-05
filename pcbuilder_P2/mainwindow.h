@@ -32,6 +32,7 @@ public:
  signals:
   void visualizzaComponentiPressed();
   void start_list_view();
+  void aggiungiComponentiPressed();
 
 public slots :
   void openSubview();

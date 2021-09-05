@@ -17,8 +17,8 @@ public:
     operator T*() const;
 };
 
-/*template <class T>
-Smartptr<T>::Smartptr (const T* p) : ptr(p ? new T(*p) : 0) {}*/ //da verificare
+//template <class T>
+/*Smartptr<T>::Smartptr ( T* p) : ptr(p ? new T(*p) : 0) {}*/ //da verificare
 
 template <class T>
 Smartptr<T>::Smartptr( T* p) : ptr(p ? p : 0) {}

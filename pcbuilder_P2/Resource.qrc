@@ -2,6 +2,7 @@
 <qresource>
     <file>style_folder/style.css</file>
     <file>database.xml</file>
+    <file>style_folder/gpu-2.png</file>
 
 </qresource>
 </RCC>

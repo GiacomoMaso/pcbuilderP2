@@ -58,7 +58,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QMainWindow(parent), header(new QLabel
     set_style();
 
    connect(view_obj, SIGNAL(clicked()), this, SIGNAL(visualizzaComponentiPressed()));
-
+   connect(add_obj, SIGNAL(clicked()), this, SIGNAL(aggiungiComponentiPressed()));
 
 
 
