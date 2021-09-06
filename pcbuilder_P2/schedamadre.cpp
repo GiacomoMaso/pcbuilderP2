@@ -23,3 +23,18 @@ unsigned int SchedaMadre::get_nvme_port() const{
 SchedaMadre* SchedaMadre::clone() const{
     return new SchedaMadre(*this);
 }
+
+unsigned int SchedaMadre::product_score() const{
+    unsigned int score=0;
+    if(grandezza=="ATX") score=score+5;
+    else if(grandezza=="Micro-ATX") score=score+4;
+    else if(grandezza=="Mini-ATX") score=score+3;
+    else score=score+2;
+    if(sata_port>=5) score=score+3;
+    else if(sata_port>3)score=score+2;
+    else score=score+1;
+    if(nvme_port>=3) score=score+2;
+    else if(nvme_port>=2) score=score+1;
+    return score;
+
+}

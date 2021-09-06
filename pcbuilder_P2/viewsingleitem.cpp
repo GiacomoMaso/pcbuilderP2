@@ -36,3 +36,9 @@ void ViewSingleItem::set_style () {
     qDebug()<<"CIAO"<<styleFile.open(QIODevice::ReadOnly);
 
 }
+
+void ViewSingleItem::closeEvent(QCloseEvent *event)
+{
+    emit closing();
+    event->accept();
+}

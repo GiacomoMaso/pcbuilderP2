@@ -67,8 +67,6 @@ SOURCES       = ../pcbuilder_P2/Magazzino.cpp \
 		../pcbuilder_P2/ram.cpp \
 		../pcbuilder_P2/rom.cpp \
 		../pcbuilder_P2/schedamadre.cpp \
-		../pcbuilder_P2/sconto.cpp \
-		../pcbuilder_P2/scontrino.cpp \
 		../pcbuilder_P2/selectaddobjectview.cpp \
 		../pcbuilder_P2/smartptr.cpp \
 		../pcbuilder_P2/viewsingleitem.cpp qrc_Resource.cpp \
@@ -95,8 +93,6 @@ OBJECTS       = Magazzino.o \
 		ram.o \
 		rom.o \
 		schedamadre.o \
-		sconto.o \
-		scontrino.o \
 		selectaddobjectview.o \
 		smartptr.o \
 		viewsingleitem.o \
@@ -282,8 +278,6 @@ DIST          = ../../../App/Qt/5.9.5/clang_64/mkspecs/features/spec_pre.prf \
 		../pcbuilder_P2/ram.h \
 		../pcbuilder_P2/rom.h \
 		../pcbuilder_P2/schedamadre.h \
-		../pcbuilder_P2/sconto.h \
-		../pcbuilder_P2/scontrino.h \
 		../pcbuilder_P2/selectaddobjectview.h \
 		../pcbuilder_P2/smartptr.h \
 		../pcbuilder_P2/viewsingleitem.h ../pcbuilder_P2/Magazzino.cpp \
@@ -303,8 +297,6 @@ DIST          = ../../../App/Qt/5.9.5/clang_64/mkspecs/features/spec_pre.prf \
 		../pcbuilder_P2/ram.cpp \
 		../pcbuilder_P2/rom.cpp \
 		../pcbuilder_P2/schedamadre.cpp \
-		../pcbuilder_P2/sconto.cpp \
-		../pcbuilder_P2/scontrino.cpp \
 		../pcbuilder_P2/selectaddobjectview.cpp \
 		../pcbuilder_P2/smartptr.cpp \
 		../pcbuilder_P2/viewsingleitem.cpp
@@ -685,8 +677,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../pcbuilder_P2/Resource.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../App/Qt/5.9.5/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.h ../pcbuilder_P2/case.h ../pcbuilder_P2/componente.h ../pcbuilder_P2/contenitore.h ../pcbuilder_P2/controller.h ../pcbuilder_P2/cpu.h ../pcbuilder_P2/formview.h ../pcbuilder_P2/gpu.h ../pcbuilder_P2/item.h ../pcbuilder_P2/listamagazzinoview.h ../pcbuilder_P2/mainwindow.h ../pcbuilder_P2/memoria.h ../pcbuilder_P2/psu.h ../pcbuilder_P2/ram.h ../pcbuilder_P2/rom.h ../pcbuilder_P2/schedamadre.h ../pcbuilder_P2/sconto.h ../pcbuilder_P2/scontrino.h ../pcbuilder_P2/selectaddobjectview.h ../pcbuilder_P2/smartptr.h ../pcbuilder_P2/viewsingleitem.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.cpp ../pcbuilder_P2/case.cpp ../pcbuilder_P2/componente.cpp ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/formview.cpp ../pcbuilder_P2/gpu.cpp ../pcbuilder_P2/item.cpp ../pcbuilder_P2/listamagazzinoview.cpp ../pcbuilder_P2/main.cpp ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/psu.cpp ../pcbuilder_P2/ram.cpp ../pcbuilder_P2/rom.cpp ../pcbuilder_P2/schedamadre.cpp ../pcbuilder_P2/sconto.cpp ../pcbuilder_P2/scontrino.cpp ../pcbuilder_P2/selectaddobjectview.cpp ../pcbuilder_P2/smartptr.cpp ../pcbuilder_P2/viewsingleitem.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.h ../pcbuilder_P2/case.h ../pcbuilder_P2/componente.h ../pcbuilder_P2/contenitore.h ../pcbuilder_P2/controller.h ../pcbuilder_P2/cpu.h ../pcbuilder_P2/formview.h ../pcbuilder_P2/gpu.h ../pcbuilder_P2/item.h ../pcbuilder_P2/listamagazzinoview.h ../pcbuilder_P2/mainwindow.h ../pcbuilder_P2/memoria.h ../pcbuilder_P2/psu.h ../pcbuilder_P2/ram.h ../pcbuilder_P2/rom.h ../pcbuilder_P2/schedamadre.h ../pcbuilder_P2/selectaddobjectview.h ../pcbuilder_P2/smartptr.h ../pcbuilder_P2/viewsingleitem.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../pcbuilder_P2/Magazzino.cpp ../pcbuilder_P2/case.cpp ../pcbuilder_P2/componente.cpp ../pcbuilder_P2/contenitore.cpp ../pcbuilder_P2/controller.cpp ../pcbuilder_P2/cpu.cpp ../pcbuilder_P2/formview.cpp ../pcbuilder_P2/gpu.cpp ../pcbuilder_P2/item.cpp ../pcbuilder_P2/listamagazzinoview.cpp ../pcbuilder_P2/main.cpp ../pcbuilder_P2/mainwindow.cpp ../pcbuilder_P2/memoria.cpp ../pcbuilder_P2/psu.cpp ../pcbuilder_P2/ram.cpp ../pcbuilder_P2/rom.cpp ../pcbuilder_P2/schedamadre.cpp ../pcbuilder_P2/selectaddobjectview.cpp ../pcbuilder_P2/smartptr.cpp ../pcbuilder_P2/viewsingleitem.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -2433,16 +2425,6 @@ schedamadre.o: ../pcbuilder_P2/schedamadre.cpp ../pcbuilder_P2/schedamadre.h \
 		../pcbuilder_P2/componente.h \
 		../pcbuilder_P2/item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o schedamadre.o ../pcbuilder_P2/schedamadre.cpp
-
-sconto.o: ../pcbuilder_P2/sconto.cpp ../pcbuilder_P2/sconto.h \
-		../pcbuilder_P2/item.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sconto.o ../pcbuilder_P2/sconto.cpp
-
-scontrino.o: ../pcbuilder_P2/scontrino.cpp ../pcbuilder_P2/scontrino.h \
-		../pcbuilder_P2/contenitore.h \
-		../pcbuilder_P2/smartptr.h \
-		../pcbuilder_P2/item.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scontrino.o ../pcbuilder_P2/scontrino.cpp
 
 selectaddobjectview.o: ../pcbuilder_P2/selectaddobjectview.cpp ../pcbuilder_P2/selectaddobjectview.h \
 		../../../App/Qt/5.9.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \

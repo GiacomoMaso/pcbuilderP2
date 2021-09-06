@@ -11,6 +11,7 @@ private:
 public:
     Gpu(std::string ="",unsigned int q=0, std::string ="", std::string ="", unsigned int p=0,unsigned int re=0, std::string ="", unsigned int =0, unsigned int =0, std::string ="" );
     virtual Gpu* clone() const;
+    virtual unsigned int product_score() const;
     unsigned int get_vram() const;
     unsigned int get_gpu_clock() const;
     std::string get_type_ram() const;

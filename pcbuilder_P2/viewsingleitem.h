@@ -13,12 +13,16 @@ class ViewSingleItem : public QWidget
 
 private:
     QVBoxLayout* list_layout;
+protected:
+     void closeEvent(QCloseEvent *event);
 
 
 public:
     ViewSingleItem(QWidget* parent=nullptr);
     void load_view_item(QStringList*);
     void set_style();
+signals:
+    void closing();
 };
 
 #endif // VIEWSINGLEITEM_H

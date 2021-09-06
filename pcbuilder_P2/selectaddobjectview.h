@@ -12,6 +12,8 @@ private:
     QGridLayout* grid_layout;
     QPushButton* gpu_button, *cpu_button, *psu_button, *ram_button, *rom_button, *case_button, *schedamadre_button;
     QLabel* title;
+protected:
+     void closeEvent(QCloseEvent *event);
 public:
     SelectAddObjectView();
     void set_style();
@@ -25,6 +27,7 @@ public slots:
     void richiesta_add_ogg_schedamadre();
 signals:
     void signal_tipo_ogg_add(std::string);
+    void closing();
 };
 
 #endif // SELECTADDOBJECTVIEW_H

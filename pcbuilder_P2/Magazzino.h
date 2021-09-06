@@ -31,7 +31,9 @@ public:
 
     void add_compoenente (const Smartptr<Item>&);
     void filtroMarca(std::string);
-    void delete_by_name(std::string);
+    bool delete_by_name(std::string);
+    bool add_item(QStringList*);
+    unsigned int get_quantita_item(std::string) const;
     void filtroCpu();
     contenitore<Item*>* get_filtro();
     contenitore<Smartptr<Item>>* get_lista();

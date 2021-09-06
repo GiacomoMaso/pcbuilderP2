@@ -22,12 +22,14 @@ private:
     SelectAddObjectView* select_add_view;
     FormView* form_view;
     QStringList* list;
+    QString styleSheet;
 
 
 
 public:
     Controller(/*QStringList* list=nullptr*/);
     void prova();
+    void set_style();
 
 
 public slots:
@@ -37,6 +39,8 @@ public slots:
     void item_to_view(std::string);
     void load_select_add_obj_view();
     void load_form_view(std::string);
+    void add_item_to_model(QStringList*);
+    void get_quantita_for_view(std::string);
 
 };
 

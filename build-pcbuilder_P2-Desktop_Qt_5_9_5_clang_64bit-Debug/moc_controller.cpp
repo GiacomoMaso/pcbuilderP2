@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Controller_t {
-    QByteArrayData data[8];
-    char stringdata0[120];
+    QByteArrayData data[11];
+    char stringdata0[173];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,13 +38,17 @@ QT_MOC_LITERAL(3, 30, 24), // "delete_obj_to_controller"
 QT_MOC_LITERAL(4, 55, 11), // "std::string"
 QT_MOC_LITERAL(5, 67, 12), // "item_to_view"
 QT_MOC_LITERAL(6, 80, 24), // "load_select_add_obj_view"
-QT_MOC_LITERAL(7, 105, 14) // "load_form_view"
+QT_MOC_LITERAL(7, 105, 14), // "load_form_view"
+QT_MOC_LITERAL(8, 120, 17), // "add_item_to_model"
+QT_MOC_LITERAL(9, 138, 12), // "QStringList*"
+QT_MOC_LITERAL(10, 151, 21) // "get_quantita_for_view"
 
     },
     "Controller\0loadMagazzinoView\0\0"
     "delete_obj_to_controller\0std::string\0"
     "item_to_view\0load_select_add_obj_view\0"
-    "load_form_view"
+    "load_form_view\0add_item_to_model\0"
+    "QStringList*\0get_quantita_for_view"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +58,7 @@ static const uint qt_meta_data_Controller[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,17 +66,21 @@ static const uint qt_meta_data_Controller[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x0a /* Public */,
-       3,    1,   40,    2, 0x0a /* Public */,
-       5,    1,   43,    2, 0x0a /* Public */,
-       6,    0,   46,    2, 0x0a /* Public */,
-       7,    1,   47,    2, 0x0a /* Public */,
+       1,    0,   49,    2, 0x0a /* Public */,
+       3,    1,   50,    2, 0x0a /* Public */,
+       5,    1,   53,    2, 0x0a /* Public */,
+       6,    0,   56,    2, 0x0a /* Public */,
+       7,    1,   57,    2, 0x0a /* Public */,
+       8,    1,   60,    2, 0x0a /* Public */,
+      10,    1,   63,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 4,    2,
     QMetaType::Void, 0x80000000 | 4,    2,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 9,    2,
     QMetaType::Void, 0x80000000 | 4,    2,
 
        0        // eod
@@ -89,6 +97,8 @@ void Controller::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->item_to_view((*reinterpret_cast< std::string(*)>(_a[1]))); break;
         case 3: _t->load_select_add_obj_view(); break;
         case 4: _t->load_form_view((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 5: _t->add_item_to_model((*reinterpret_cast< QStringList*(*)>(_a[1]))); break;
+        case 6: _t->get_quantita_for_view((*reinterpret_cast< std::string(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -119,13 +129,13 @@ int Controller::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }

@@ -23,3 +23,18 @@ std::string Gpu::get_variante() const{
     return variante;
 }
 
+unsigned int Gpu::product_score() const{
+    unsigned int score=0;
+    if(vram>=16) score=score+5;
+    else if(vram>=8) score=score+4;
+    else if(vram>=4) score=score+3;
+    else if(vram>=2) score=score+2;
+    else score=score+1;
+    if(gpu_clock>=1500) score=score+2;
+    else if(gpu_clock>=1000) score=score+1;
+    if(type_ram=="DDR6") score=score+3;
+    else if(type_ram=="DDR5") score=score+2;
+    else if(type_ram=="DDR3"|| type_ram=="DDR4") score=score+1;
+    return score;
+}
+
