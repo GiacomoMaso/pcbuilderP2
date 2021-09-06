@@ -12,6 +12,7 @@ ListaMagazzinoView::ListaMagazzinoView(QWidget* parent) : QWidget(parent), magaz
 // filter_box->lineEdit()->setPlaceholderText("filtro");
     QStringList List=(QStringList() <<"Tutti gli elementi"<< "Cpu" << "Gpu" << "Ram"<<"Rom"<<"Psu"<<"Scheda Madre");
 
+
     filter_box->addItems(List);
 //    magazzino_list->setModel(list_model);
 
@@ -45,6 +46,7 @@ void ListaMagazzinoView::loadMagazzinoview(QStringList* x) {
     {
         qDebug()<<i;
     }
+
     for(auto it=x->begin(); it!=x->end(); it++){
 
         magazzino_list->addItem(*it);
@@ -54,10 +56,21 @@ void ListaMagazzinoView::loadMagazzinoview(QStringList* x) {
 
 void ListaMagazzinoView::richiesta_elimina_obj() {
     if(magazzino_list->count()!=0){
-    QListWidgetItem* provv=magazzino_list->currentItem();
-    std::string obj_to_delete=provv->text().toStdString();
-    delete provv;
-    emit delete_obj_to_controller(obj_to_delete);
+
+        QListWidgetItem* provv=magazzino_list->currentItem();
+        std::string obj_to_delete=provv->text().toStdString();
+        emit get_quantita_item(obj_to_delete);
+        std::cout<<"quantita item"<<quantita_item<<std::endl;
+        if(quantita_item>1){
+           QString s_quantita=QString::number(quantita_item-1);
+           QMessageBox info;
+           info.information(this,"item eliminato","E' stato rimosso dal magazzino un Item, la quantità rimanente è: "+s_quantita);
+           emit delete_obj_to_controller(obj_to_delete);
+        }
+        else{
+        delete provv;
+            emit delete_obj_to_controller(obj_to_delete);
+        }
     }
 }
 
@@ -78,4 +91,12 @@ void ListaMagazzinoView::set_style () {
        }
     qDebug()<<"CIAO"<<styleFile.open(QIODevice::ReadOnly);
 
+}
+
+void ListaMagazzinoView::set_quantita_item(unsigned int x){
+    quantita_item=x;
+}
+
+void ListaMagazzinoView::add_item_to_layout(QString x){
+    magazzino_list->addItem(x);
 }

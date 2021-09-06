@@ -28,8 +28,6 @@ SOURCES += \
         ram.cpp \
         rom.cpp \
         schedamadre.cpp \
-        sconto.cpp \
-        scontrino.cpp \
         selectaddobjectview.cpp \
         smartptr.cpp \
         viewsingleitem.cpp
@@ -51,8 +49,6 @@ HEADERS += \
     ram.h \
     rom.h \
     schedamadre.h \
-    sconto.h \
-    scontrino.h \
     selectaddobjectview.h \
     smartptr.h \
     viewsingleitem.h

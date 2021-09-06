@@ -48,7 +48,6 @@
   <serie>7</serie>
   <ghz>4000</ghz>
   <core_number>4</core_number>
-  <intel_AMD>intel</intel_AMD>
   <socket>LGA1100</socket>
 </Cpu>
 
@@ -99,7 +98,6 @@
   <capacity>16</capacity>
   <clock>3200</clock>
   <latency>32</latency>
-  <num_per_pacco>2</num_per_pacco>
 </Ram>
 
 <Rom>

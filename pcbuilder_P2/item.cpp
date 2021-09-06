@@ -11,6 +11,14 @@ unsigned int Item::get_quantita() const{
     return quantita;
 }
 
+void Item::addQuantita(const int & q){
+    quantita=quantita+q;
+}
+
+void Item::removeOneItem(){
+    quantita=quantita-1;
+}
+
 
 
 

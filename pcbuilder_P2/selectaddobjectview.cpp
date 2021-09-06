@@ -90,3 +90,9 @@ void SelectAddObjectView::richiesta_add_ogg_case(){
 void SelectAddObjectView::richiesta_add_ogg_schedamadre(){
     emit signal_tipo_ogg_add("SchedaMadre");
 }
+
+void SelectAddObjectView::closeEvent(QCloseEvent *event)
+{
+    emit closing();
+    event->accept();
+}

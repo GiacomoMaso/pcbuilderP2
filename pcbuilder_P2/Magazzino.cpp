@@ -126,7 +126,7 @@ contenitore<Smartptr<Item>>* Magazzino::get_lista() {
     return lista_ogg;
 }
 
-void Magazzino::load_database() {          //da fare delete sui puntatori
+void Magazzino::load_database() {
 //    QFile file("/Users/giacomomason/Documents/GitHub/pcbuilderP2/pcbuilder_P2/database.xml");
       QFile file(":/database.xml");
 
@@ -197,7 +197,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                           unsigned int price;
                           unsigned int realese_date;
                           std::string serie;
-                          unsigned int ghz; //potrebbe essere anche double
+                          double ghz;
                           unsigned int core_number;
                           std::string intel_AMD;
                           std::string socket;
@@ -225,21 +225,19 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                                    serie=reader.readElementText().toStdString();
                               }
                               else if(reader.name() == "ghz"){
-                                   ghz=reader.readElementText().toInt();
+                                   ghz=reader.readElementText().toDouble();
                               }
                               else if(reader.name() == "core_number"){
                                    core_number=reader.readElementText().toInt();
                               }
-                              else if(reader.name() == "intel_AMD"){
-                                   intel_AMD=reader.readElementText().toStdString();
-                              }
+
                               else if(reader.name() == "socket"){
                                    socket=reader.readElementText().toStdString();
                               }
 
                          }
 
-                         Cpu* provv=new Cpu(nome,quantita,marca,modello,price,realese_date,serie,ghz,core_number,intel_AMD,socket);
+                         Cpu* provv=new Cpu(nome,quantita,marca,modello,price,realese_date,serie,ghz,core_number,socket);
                          Smartptr<Item> obj(provv);
                          if(lista_ogg) add_compoenente(obj);
                          else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -253,7 +251,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                           unsigned int price;
                           unsigned int realese_date;
                           unsigned int watt;
-                          unsigned int rating;
+                          std::string rating;
                           std::string modularita;
 
                          while(reader.readNextStartElement()){
@@ -280,7 +278,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                                    watt=reader.readElementText().toInt();
                               }
                               else if(reader.name() == "rating"){
-                                   rating=reader.readElementText().toInt();
+                                   rating=reader.readElementText().toStdString();
                               }
                               else if(reader.name() == "modularita"){
                                    modularita=reader.readElementText().toStdString();
@@ -411,7 +409,7 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                            unsigned int capacity;
                            unsigned int clock;
                            unsigned int latency;
-                           unsigned int num_per_pacco;
+//                           unsigned int num_per_pacco;
 
 
                           while(reader.readNextStartElement()){
@@ -446,14 +444,14 @@ void Magazzino::load_database() {          //da fare delete sui puntatori
                                else if(reader.name() == "latency"){
                                     latency=reader.readElementText().toInt();
                                }
-                               else if(reader.name() == "num_per_pacco"){
-                                    num_per_pacco=reader.readElementText().toInt();
-                               }
+//                               else if(reader.name() == "num_per_pacco"){
+//                                    num_per_pacco=reader.readElementText().toInt();
+//                               }
 
 
                           }
 
-                          Ram* provv=new Ram(nome,quantita,marca,modello,price,realese_date,type_memory,capacity,clock,latency,num_per_pacco);
+                          Ram* provv=new Ram(nome,quantita,marca,modello,price,realese_date,type_memory,capacity,clock,latency);
                           Smartptr<Item> obj(provv);
                           if(lista_ogg) add_compoenente(obj);
                           else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
@@ -534,25 +532,34 @@ QStringList* Magazzino::get_lista_view(){
     QStringList* list=new QStringList();
     QString obj;
     for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
-        obj=(QString::fromStdString((*it)->get_name()));
+        obj=QString::fromStdString((*it)->get_name());
         list->push_back(obj);
+
     }
     return list;
 }
 
-void Magazzino::delete_by_name(std::string x){
+bool Magazzino::delete_by_name(std::string x){
 
-//    for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
-//        std::cout<<(*it)->get_name()<<std::endl;
-//    }
-
-
-
+    bool empty=false;
     for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
-        if((*it)->get_name()==x){
 
-            lista_ogg->delete_node(it);}
-}
+        if((*it)->get_name()==x){
+            if((*it)->get_quantita()>1) {
+                (*it)->removeOneItem();
+
+            }
+            else { empty=lista_ogg->delete_node(it);
+            }
+        }
+    }
+
+    if(empty){
+        delete lista_ogg;
+        lista_ogg=nullptr;
+    }
+
+    return empty;
 
 //    for(auto it=lista_ogg->begin(); it!=lista_ogg->end(); it++){
 //        std::cout<<(*it)->get_name()<<std::endl;
@@ -562,6 +569,7 @@ void Magazzino::delete_by_name(std::string x){
 QStringList* Magazzino::get_item_to_view(std::string x) const{
     QStringList* list_field=new QStringList();
     QString field;
+
     for(contenitore<Smartptr<Item>>::Const_iteratore it=lista_ogg->inizio(); it!=lista_ogg->fine(); it++){
         if((*it)->get_name()==x){
             Item* p=*it;
@@ -583,7 +591,7 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
                 list_field->push_back(field);
                 field="Vram: "+QString::number(p_gpu->get_vram());
                 list_field->push_back(field);
-                field="Clock: "+QString::number(p_gpu->get_gpu_clock());
+                field="Clock: "+QString::number(p_gpu->get_gpu_clock())+" Mhz";
                 list_field->push_back(field);
                 field="Tipologia ram:"+QString::fromStdString(p_gpu->get_type_ram());
                 list_field->push_back(field);
@@ -601,14 +609,15 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
                 list_field->push_back(field);
                 field="Serie: "+QString::fromStdString(p_cpu->get_serie());
                 list_field->push_back(field);
-                field="Cpu ghz: "+QString::number(p_cpu->get_ghz());
+                field="Cpu ghz: "+QString::number(p_cpu->get_ghz())+" Ghz";
                 list_field->push_back(field);
                 field="Numero di core: "+QString::number(p_cpu->get_core_number());
                 list_field->push_back(field);
-                field="Intel/AMD: "+QString::fromStdString(p_cpu->get_intel_AMD());
+//                field="Intel/AMD: "+QString::fromStdString(p_cpu->get_intel_AMD());
                 list_field->push_back(field);
                 field="Socket in cui va inserito: "+QString::fromStdString(p_cpu->get_socket());
                 list_field->push_back(field);
+
 
 
             }
@@ -622,9 +631,9 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
                 list_field->push_back(field);
                 field="Data di rilascio: "+QString::number(p_psu->get_realese_date());
                 list_field->push_back(field);
-                field="Watt: "+QString::number(p_psu->get_watt());
+                field="Watt: "+QString::number(p_psu->get_watt())+ "W";
                 list_field->push_back(field);
-                field="Rating: "+QString::number(p_psu->get_rating());
+                field="Rating: "+QString::fromStdString(p_psu->get_rating());
                 list_field->push_back(field);
                 field="Modularità: "+QString::fromStdString(p_psu->get_mod());
                 list_field->push_back(field);
@@ -692,12 +701,11 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
                 list_field->push_back(field);
                 field="Capacità: "+QString::number(p_ram->get_capacity());
                 list_field->push_back(field);
-                field="Clock: "+QString::number(p_ram->get_clock());
+                field="Clock: "+QString::number(p_ram->get_clock())+ "Mhz";
                 list_field->push_back(field);
-                field="Latenza: "+QString::number(p_ram->get_latency());
+                field="Latenza: CL"+QString::number(p_ram->get_latency());
                 list_field->push_back(field);
-                field="Numero per pacco: "+QString::number(p_ram->get_num_per_pacco());
-                list_field->push_back(field);
+
             }
 
             else if(dynamic_cast<Rom*>(p)){
@@ -714,14 +722,17 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
                 list_field->push_back(field);
                 field="Capacità: "+QString::number(p_rom->get_capacity());
                 list_field->push_back(field);
-                field="Velocità scrittura: "+QString::number(p_rom->get_mb_write());
+                field="Velocità scrittura: "+QString::number(p_rom->get_mb_write())+"Mb/s";
                 list_field->push_back(field);
-                field="velocità in lettura: "+QString::number(p_rom->get_mb_read());
+                field="Velocità in lettura: "+QString::number(p_rom->get_mb_read())+"Mb/s";
                 list_field->push_back(field);
                 field="Size: "+QString::number(p_rom->get_size());
                 list_field->push_back(field);
 
             }
+
+            field="Product score: "+QString::number((*it)->product_score());
+            list_field->push_back(field);
 
         }
     }
@@ -730,8 +741,131 @@ QStringList* Magazzino::get_item_to_view(std::string x) const{
     {
         qDebug()<<i;
     }
+
     return list_field;
 }
 
+bool Magazzino::add_item(QStringList* list){
+    bool check_name=true;
+    std::string nome=list->at(1).toStdString();
+    if(lista_ogg){
+        std::cout<<"prova list"<<std::endl;
+        for(contenitore<Smartptr<Item>>::Iteratore it=lista_ogg->begin(); it !=lista_ogg->end(); it++){
+            if(nome==(*it)->get_name()){
+                (*it)->addQuantita(list->at(2).toInt()); // check  const int su item
+                check_name=false;
+                std::cout<<"quantità: "<<(*it)->get_quantita()<<std::endl;
+            }
+        }
+     }
+
+    if(check_name==true){
+
+        unsigned int quantita=list->at(2).toInt();
+        std::string marca=list->at(3).toStdString();
+        std::string modello=list->at(4).toStdString();
+        unsigned int price=list->at(5).toInt();
+        unsigned int realese_date=list->at(6).toInt();
+
+
+        if(list->at(0).toStdString()=="Gpu"){
+            std::string variante=list->at(7).toStdString();
+            unsigned int vram=list->at(8).toInt();
+            unsigned int gpu_clock=list->at(9).toInt();
+            std::string type_ram=list->at(10).toStdString();
+
+            Gpu* provv=new Gpu(nome,quantita,marca,modello,price,realese_date,variante,vram,gpu_clock,type_ram);
+            Smartptr<Item> obj(provv);
+            if(lista_ogg) add_compoenente(obj);
+            else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
+        }
+        else  if(list->at(0).toStdString()=="Cpu"){
+            std::string serie=list->at(7).toStdString();
+            double ghz=list->at(8).toInt(); //potrebbe essere anche double
+            unsigned int core_number=list->at(9).toInt();
+//            std::string intel_AMD=list->at(10).toStdString();
+            std::string socket=list->at(10).toStdString();
+
+            Cpu* provv=new Cpu(nome,quantita,marca,modello,price,realese_date,serie,ghz,core_number,socket);
+            Smartptr<Item> obj(provv);
+            if(lista_ogg) add_compoenente(obj);
+            else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
+        }
+
+        else  if(list->at(0).toStdString()=="Psu"){
+            unsigned int watt=list->at(7).toInt();
+            std::string rating=list->at(8).toStdString();
+            std::string modularita=list->at(9).toStdString();
+
+            Psu* provv=new Psu(nome,quantita,marca,modello,price,realese_date,watt,rating,modularita);
+            Smartptr<Item> obj(provv);
+            if(lista_ogg) add_compoenente(obj);
+            else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
+        }
+
+
+        else if(list->at(0).toStdString()=="Case"){
+            std::string case_dim=list->at(7).toStdString();
+            std::string mb_supported=list->at(8).toStdString();
+
+            Case* provv=new Case(nome,quantita,marca,modello,price,realese_date,case_dim,mb_supported);
+            Smartptr<Item> obj(provv);
+            if(lista_ogg) add_compoenente(obj);
+            else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
+        }
+
+        else  if(list->at(0).toStdString()=="Ram"){
+            std::string type_memory=list->at(7).toStdString();
+            unsigned int capacity=list->at(8).toInt();
+            unsigned int clock=list->at(9).toInt();
+            unsigned int latency=list->at(10).toInt();
+//            unsigned int num_per_pacco=list->at(11).toInt();
+
+            Ram* provv=new Ram(nome,quantita,marca,modello,price,realese_date,type_memory,capacity,clock,latency);
+            Smartptr<Item> obj(provv);
+            if(lista_ogg) add_compoenente(obj);
+            else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
+        }
+
+        else  if(list->at(0).toStdString()=="Rom"){
+            std::string type_memory=list->at(7).toStdString();
+            unsigned int capacity=list->at(8).toInt();
+            double mb_write=list->at(9).toDouble();
+            double mb_read=list->at(10).toDouble();
+            double size=list->at(11).toDouble();
+
+
+            Rom* provv=new Rom(nome,quantita,marca,modello,price,realese_date,type_memory,capacity,mb_write,mb_read, size);
+            Smartptr<Item> obj(provv);
+            if(lista_ogg) add_compoenente(obj);
+            else{lista_ogg=new contenitore<Smartptr<Item>>(obj);}
+
+        }
+
+
+//        contenitore<Smartptr<Item>>* prova=get_lista();
+//        for(contenitore<Smartptr<Item>>::Iteratore it=prova->begin(); it !=prova->end(); it++){
+//            std::cout<<(*it)->get_name()<<std::endl;}
+    }
+
+    return check_name;
+}
+
+unsigned int Magazzino::get_quantita_item(std::string x) const{
+    unsigned int quantita=0;
+    for(contenitore<Smartptr<Item>>::Const_iteratore it=lista_ogg->inizio(); it !=lista_ogg->fine(); it++){
+           if(x==(*it)->get_name()){
+               quantita=(*it)->get_quantita();
+               return quantita;
+            }
+    }
+
+    return quantita;
+}
 
 

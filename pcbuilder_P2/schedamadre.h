@@ -11,11 +11,13 @@ private:
 
 public:
     SchedaMadre(std::string ="",unsigned int =0, std::string ="", std::string ="", unsigned int =0,unsigned int =0, std::string ="", std::string ="", unsigned int =0, unsigned int=0);
+    virtual SchedaMadre* clone() const;
+    virtual unsigned int product_score() const;
     std::string get_grandezza() const;
     std::string get_socket_mb() const;
     unsigned int get_sata_port() const;
     unsigned int get_nvme_port() const;
-    virtual SchedaMadre* clone() const;
+
 
 };
 

@@ -1,5 +1,6 @@
 #ifndef CONTENITORE_H
 #define CONTENITORE_H
+#include <iostream>
 
 template< class T>
 class contenitore {
@@ -72,7 +73,7 @@ public:
     Const_iteratore fine() const ;
     T get_last() const;  // solo per testing
     Nodo* remove_node(Nodo*);
-    void delete_node(Iteratore& );
+    bool delete_node(Iteratore& );
 
 };
 
@@ -316,29 +317,41 @@ return x;
 }
 
 template<class T>
-void contenitore<T>::delete_node( Iteratore& it){
+bool contenitore<T>::delete_node( Iteratore& it){
     Nodo* provv=it.p;
+    bool delete_all=false;
+
     if(!it.p->prec && !it.p->next){
+        std::cout<<"entra"<<std::endl;
         it.p=nullptr;
         first=nullptr;
         last=nullptr;
+        delete_all=true;
+
 
     }
     else if(!it.p->prec){
+        std::cout<<"prec"<<std::endl;
         it.p->next->prec=nullptr;
         first=it.p->next;
         it.p=it.p->next;
+
     }
     else if(!it.p->next){
+        std::cout<<"succ"<<std::endl;
         it.p->prec->next=nullptr;
         it.p=it.p->prec;
 
     }
     else{
+
     it.p->prec->next=it.p->next;
     it.p->next->prec=it.p->prec;
     it.p=it.p->prec;}
+
     delete provv;
+
+    return delete_all;
 }
 
 
